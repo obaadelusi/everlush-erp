@@ -20,19 +20,20 @@ const Router = () => {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Dashboard />} />
-        <Route path="analytics" element={<Analytics />} />
-        <Route path="products" element={<AllProducts />} />
-        <Route path="products/new" element={<NewProduct />} />
-        <Route path="products/:productId" element={<ProductPage />}>
-          <Route path="edit" element={<EditProduct />} />
+        <Route path="/" element={<Dashboard />}>
+          <Route path="analytics" element={<Analytics />} />
+          <Route path="products" element={<AllProducts />} />
+          <Route path="products/new" element={<NewProduct />} />
+          <Route path="products/:productId" element={<ProductPage />}>
+            <Route path="edit" element={<EditProduct />} />
+          </Route>
+          <Route path="sales" element={<Sales />} />
+          <Route path="purchases" element={<Purchases />} />
+          <Route path="customers" element={<AllCustomers />} />
+          <Route path="suppliers" element={<Suppliers />} />
+          <Route path="users" element={<Users />} />
+          <Route path="*" element={<ErrorPage />} />
         </Route>
-        <Route path="sales" element={<Sales />} />
-        <Route path="purchases" element={<Purchases />} />
-        <Route path="customers" element={<AllCustomers />} />
-        <Route path="suppliers" element={<Suppliers />} />
-        <Route path="users" element={<Users />} />
-        <Route path="*" element={<ErrorPage />} />
       </Routes>
     </>
   );
