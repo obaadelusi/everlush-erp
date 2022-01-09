@@ -3,6 +3,8 @@ const router = express.Router();
 
 const Customer = require('../models/Stakeholder');
 
+// https://everlush.netlify.app
+
 // Show all customers
 router.get('/', async (req, res) => {
   const { skip, limit } = req.query;
@@ -12,7 +14,6 @@ router.get('/', async (req, res) => {
     .limit(+limit)
     .sort({ name: 1 })
     .exec();
-  // res.render('customers/index', { customers });
   res.send(customers);
 });
 
@@ -26,7 +27,7 @@ router.post('/', async (req, res) => {
   const stakeholder = new Customer(req.body.customer);
   stakeholder.isCustomer = true;
   await stakeholder.save();
-  res.redirect(`/stakeholders/${stakeholder._id}`);
+  res.redirect(302, `https://everlush.netlify.app/stakeholders/${stakeholder._id}`);
 });
 
 module.exports = router;

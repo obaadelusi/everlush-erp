@@ -4,10 +4,11 @@ const router = express.Router();
 const Product = require('../models/Product');
 const Transaction = require('../models/Transaction');
 
+// https://everlush.netlify.app
+
 // Show all products
 router.get('/', async (req, res) => {
   const products = await Product.find({}).sort({ name: 1 }).exec();
-  // res.render('products/index', { products });
   res.send(products);
 });
 
@@ -22,7 +23,7 @@ router.post('/', async (req, res) => {
   const product = new Product(req.body.product);
   console.log(product);
   await product.save();
-  res.redirect(302, `/products/${product._id}`);
+  res.redirect(302, `https://everlush.netlify.app/products/${product._id}`);
 });
 
 // Render edit product form
@@ -30,9 +31,8 @@ router.get('/:id/edit', async (req, res) => {
   const productId = req.params.id;
   const product = await Product.findById(productId);
   if (!product) {
-    res.redirect(302, '/products');
+    res.redirect(302, 'https://everlush.netlify.app/products');
   }
-  // res.render('products/edit', { product });
   res.send(product);
 });
 
@@ -41,7 +41,7 @@ router.put('/:id', async (req, res) => {
   const productId = req.params.id;
   const product = await Product.findByIdAndUpdate(productId, req.body.product);
   await product.save();
-  res.redirect(`/products/${productId}`);
+  res.redirect(302, `https://everlush.netlify.app/products/${productId}`);
 });
 
 // Delete product
@@ -59,7 +59,6 @@ router.get('/:id', async (req, res) => {
     res.redirect('/');
   }
   const transactions = await Transaction.find({ 'items.product': productId }).sort({ createdAt: -1 }).populate('stakeholder', 'name').populate('items.product', 'name').exec();
-  // res.render('products/show', { product, transactions });
   res.send({ product, transactions });
 });
 

@@ -1,5 +1,7 @@
 ## Everlush ERP
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/daf7b58a-147c-40d5-9d75-31f2a4013f12/deploy-status)](https://everlush.netlify.app)
+
 An Enterprise Resource Planning application created for small business owners to record business transactions and keep track of empolyees. Built with NodeJS, Express, React, MongoDB and Bootstrap.
 
 ## 🚨Project Status
