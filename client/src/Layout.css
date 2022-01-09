@@ -3,7 +3,7 @@
   min-height: 100vh;
 }
 
-.Layout-page {
+.Layout-main {
   flex: 1 1 0%;
   display: flex;
   flex-direction: column;

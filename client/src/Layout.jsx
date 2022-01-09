@@ -10,7 +10,7 @@ const Layout = () => {
     <BrowserRouter>
       <div className="Layout">
         <Sidebar />
-        <div className="Layout-page">
+        <div className="Layout-main">
           <Header />
           <Router />
         </div>
