@@ -11,21 +11,21 @@ function EditProduct() {
   const [product, setProduct] = useState({});
   const [message, setMessage] = useState('');
 
-  const getProduct = async () => {
-    fetch(`/products/${productId}/edit`)
-      .then((res) => res.json())
-      .then((data) => setProduct(data))
-      .catch((err) => console.error(err));
-  };
-
   useEffect(() => {
+    const getProduct = async () => {
+      fetch(`/products/${productId}/edit`)
+        .then((res) => res.json())
+        .then((data) => setProduct(data))
+        .catch((err) => console.error(err));
+    };
     getProduct();
-    document.title = 'Edit Product - Everlush';
-  }, [product]);
+  }, []);
 
   const handleChange = () => {
     setMessage('Click Update after changing value');
   };
+
+  document.title = 'Edit Product - Everlush';
 
   return (
     <div className="ProductForm">

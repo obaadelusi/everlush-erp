@@ -14,17 +14,16 @@ const ProductPage = () => {
   const [product, setProduct] = useState({});
   const [transactions, setTransactions] = useState([]);
 
-  const getProduct = async () => {
-    fetch(`/products/${productId}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setTransactions(data.transactions);
-        setProduct(data.product);
-      })
-      .catch((err) => console.error(err));
-  };
-
   useEffect(() => {
+    const getProduct = async () => {
+      fetch(`/products/${productId}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setTransactions(data.transactions);
+          setProduct(data.product);
+        })
+        .catch((err) => console.error(err));
+    };
     getProduct();
     window.scrollTo(0, 0);
   }, []);
@@ -52,7 +51,7 @@ const ProductPage = () => {
           {date.toDateString()} <br />
           {date.toLocaleTimeString('en-US')}
         </td>
-        <td className={t.type == 'sale' ? 'Transactions-sale' : 'Transactions-purchase'}>{t.type}</td>
+        <td className={t.type === 'sale' ? 'Transactions-sale' : 'Transactions-purchase'}>{t.type}</td>
         <td>{t.stakeholder.name}</td>
         <td>{quantity}</td>
         <td>₦{price && addCommas(price)}</td>

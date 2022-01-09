@@ -12,19 +12,18 @@ const Products = () => {
   const [products, setProducts] = useState([]);
   const [showProducts, setShowProducts] = useState('active');
 
-  const fetchProducts = async () => {
-    fetch('/products')
-      .then((res) => res.json())
-      .then((data) => {
-        setAllProducts(data);
-        setProducts(data.filter((p) => p.isActive === true));
-      })
-      .catch((err) => console.log(err));
-  };
-
   useEffect(() => {
+    const fetchProducts = async () => {
+      fetch('/products')
+        .then((res) => res.json())
+        .then((data) => {
+          setAllProducts(data);
+          setProducts(data.filter((p) => p.isActive === true));
+        })
+        .catch((err) => console.log(err));
+    };
     fetchProducts();
-  }, [allProducts]);
+  }, []);
 
   const handleChange = async (e) => {
     setShowProducts(e.currentTarget.value);

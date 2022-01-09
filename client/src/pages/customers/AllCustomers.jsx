@@ -8,14 +8,13 @@ function AllCustomers() {
   const [customers, setCustomers] = useState([]);
   const limit = 8;
 
-  const getCustomers = async () => {
-    fetch(`/customers?skip=${skip}&limit=${limit}`)
-      .then((res) => res.json())
-      .then((data) => setCustomers(data))
-      .catch((err) => console.log(err));
-  };
-
   useEffect(() => {
+    const getCustomers = async () => {
+      fetch(`/customers?skip=${skip}&limit=${limit}`)
+        .then((res) => res.json())
+        .then((data) => setCustomers(data))
+        .catch((err) => console.log(err));
+    };
     getCustomers();
   }, [skip]);
 
