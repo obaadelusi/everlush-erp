@@ -46,7 +46,7 @@ function NewProduct() {
   return (
     <div className="ProductForm">
       <div>
-        <Link to="/products" className="Form-close">
+        <Link to="https://everlush-erp.herokuapp.com/products" className="Form-close">
           <i className="bx bx-x"></i> &nbsp;&nbsp; Exit
         </Link>
       </div>

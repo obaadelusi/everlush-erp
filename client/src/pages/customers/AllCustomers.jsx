@@ -10,7 +10,7 @@ function AllCustomers() {
 
   useEffect(() => {
     const getCustomers = async () => {
-      fetch(`/customers?skip=${skip}&limit=${limit}`)
+      fetch(`https://everlush-erp.herokuapp.com/customers?skip=${skip}&limit=${limit}`)
         .then((res) => res.json())
         .then((data) => setCustomers(data))
         .catch((err) => console.log(err));

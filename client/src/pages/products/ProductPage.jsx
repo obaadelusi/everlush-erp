@@ -16,7 +16,7 @@ const ProductPage = () => {
 
   useEffect(() => {
     const getProduct = async () => {
-      fetch(`/products/${productId}`)
+      fetch(`https://everlush-erp.herokuapp.com/products/${productId}`)
         .then((res) => res.json())
         .then((data) => {
           setTransactions(data.transactions);

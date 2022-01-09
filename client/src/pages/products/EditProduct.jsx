@@ -13,7 +13,7 @@ function EditProduct() {
 
   useEffect(() => {
     const getProduct = async () => {
-      fetch(`/products/${productId}/edit`)
+      fetch(`https://everlush-erp.herokuapp.com/products/${productId}/edit`)
         .then((res) => res.json())
         .then((data) => setProduct(data))
         .catch((err) => console.error(err));
