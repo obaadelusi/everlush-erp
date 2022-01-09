@@ -23,19 +23,8 @@ const Products = () => {
   };
 
   useEffect(() => {
-    document.title = 'All Products - Everlush';
     fetchProducts();
-  }, []);
-
-  let options = [
-    { label: 'Aqualush', value: 'aql' },
-    { label: 'Oba', value: 'oba' },
-    { label: 'kemisola', value: 'kem' },
-    { label: 'oyaisola', value: 'oya' },
-    { label: 'sosisola', value: 'sos' },
-    { label: 'kadisola', value: 'kad' },
-    { label: 'ayoisola', value: 'ayo' }
-  ];
+  }, [allProducts]);
 
   const handleChange = async (e) => {
     setShowProducts(e.currentTarget.value);
@@ -45,6 +34,8 @@ const Products = () => {
       setProducts(allProducts.filter((p) => p.isActive === true));
     }
   };
+
+  document.title = 'All Products - Everlush';
 
   return (
     <div className="Products">

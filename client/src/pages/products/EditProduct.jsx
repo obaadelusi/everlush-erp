@@ -21,7 +21,7 @@ function EditProduct() {
   useEffect(() => {
     getProduct();
     document.title = 'Edit Product - Everlush';
-  }, []);
+  }, [product]);
 
   const handleChange = () => {
     setMessage('Click Update after changing value');

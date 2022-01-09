@@ -34,6 +34,7 @@ function NewProduct() {
         break;
       case 'inventory':
         value === '' ? setInventory('') : setInventory(Math.abs(value));
+        break;
       case 'lowStock':
         value === '' ? setLowStock('') : setLowStock(Math.abs(value));
         break;
