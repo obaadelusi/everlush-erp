@@ -1,0 +1,26 @@
+.AllCustomers {
+  width: 90%;
+  margin: 1em auto 5em;
+}
+
+.AllCustomers-table {
+  overflow-x: auto;
+  max-width: 1100px;
+  border-radius: 6px;
+}
+
+.AllCustomers-nav {
+  border-bottom: 1px solid var(--grey-200);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0.75em 0;
+}
+
+.AllCustomers-nav button:not(:disabled):hover {
+  background-color: var(--grey-200);
+}
+
+.AllCustomers tr td:nth-child(4) {
+  min-width: 120px;
+}

@@ -1,0 +1,46 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="container my-5">
+  <h1 class="mb-4">All transactions</h1>
+
+  <div class="card">
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead class="table-secondary">
+          <tr>
+            <th scope="col">Type</th>
+            <th scope="col" style="min-width: 140px">Date</th>
+            <th scope="col">Supplier</th>
+            <th scope="col">Products</th>
+            <!-- <th scope="col">Stock left</th> -->
+            <th scope="col">Total</th>
+            <th scope="col">Receipts</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for(const t of transactions) {%>
+          <tr>
+            <td class="<%=t.type == 'purchase' ? 'text-primary' : 'text-success' %>"><%=t.type%></td>
+            <td>
+              <%=t.createdAt.toDateString()%> <br />
+              <%=t.createdAt.toLocaleTimeString('en-US')%>
+            </td>
+            <td><%=t.stakeholder.name%></td>
+            <td>
+              <% t.items.forEach(i => { %>
+              <span><%=i.product.name%> •</span>
+              <% }) %>
+            </td>
+            <!-- <td><%//=i.stockLeft%></td> -->
+            <td>₦<%=t.total%></td>
+            <td><a href="/transactions/<%=t._id%>">View</a></td>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+    <% if(transactions.length < 1) {%>
+    <div class="text-center py-3 text-muted">Nothing yet</div>
+    <% } %>
+  </div>
+</div>

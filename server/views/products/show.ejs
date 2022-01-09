@@ -1,0 +1,91 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="container-md py-4">
+  <div class="my-3">
+    <a href="/products"><i class="bi bi-arrow-left"></i> All products</a>
+  </div>
+
+  <h2 style="text-transform: capitalize"><%=product.name%></h2>
+  <div class="row mb-3 g-3">
+    <div class="col-lg-4">
+      <img src="<%=product.image%>" class="img-fluid card-img" alt="<%=product.name%>" />
+    </div>
+
+    <%function addCommas(num) { return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','); }%>
+
+    <div class="col-lg-5">
+      <div class="card">
+        <div class="card-body">
+          <div class="position-relative">
+            <% if (product.isActive) {%>
+            <span class="position-absolute top-0 end-0 badge rounded-pill bg-primary mt-2 me-3">Active</span>
+            <% } else {%>
+            <span class="position-absolute top-0 end-0 badge rounded-pill bg-secondary mt-2 me-3">Deactivated</span>
+            <% } %>
+          </div>
+          <h4>Description</h4>
+          <p class="card-text"><%=product.description%></p>
+          <a href="/products/<%=product._id%>/edit" class="btn btn-outline-secondary btn-sm"><i class="bi bi-pencil-square"></i> <%=product.isActive ? "Edit/Deactivate" : "Activate"%></a>
+          <% if (product.isActive) {%>
+          <a href="/transactions/new?type=stockAdjustment" class="btn btn-warning btn-sm">Adjust stock +</a>
+          <% } %>
+        </div>
+        <div class="card-footer text-muted"><i class="bi bi-tags-fill"></i> <%=product.category%></div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <% if (product.inventory <= product.lowStock) {%>
+            <span class="badge rounded-pill bg-danger">Low stock </span>
+            <% } else {%>
+            <span class="badge rounded-pill bg-success">In stock </span>
+            <% } %> &nbsp; Stock: <%=product.inventory%>
+          </li>
+          <li class="list-group-item">Selling price: ₦<%=addCommas(product.sellingPrice)%></li>
+          <!-- <li class="list-group-item">Margin: <%//=product.margin%></li> -->
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h4 class="m-3">Stock history</h4>
+
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead class="table-secondary">
+          <tr>
+            <th scope="col" style="min-width: 140px">Date</th>
+            <th scope="col">Type</th>
+            <th scope="col">Supplier/Customer</th>
+            <th scope="col">Qty bought</th>
+            <th scope="col">Price</th>
+            <th scope="col">Previous stock</th>
+            <th scope="col">Stock left</th>
+            <th scope="col">Receipts</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for(const t of transactions) {%>
+          <tr>
+            <td>
+              <%=t.createdAt.toDateString()%> <br />
+              <%=t.createdAt.toLocaleTimeString('en-US')%>
+            </td>
+            <td class="<%=t.type == "purchase" ? "text-primary" : "text-success"%> "><%=t.type%></td>
+            <td><%=t.stakeholder.name%></td>
+            <%for(const i of t.items){ if(i.product._id === product._id){%>
+            <td><%=i.quantity%></td>
+            <td>₦<%=i.purchasePrice || i.sellingPrice%></td>
+            <td><%=i.prevStock%></td>
+            <td><%=i.stockLeft%></td>
+            <% }}%>
+            <td><a href="/transactions/<%=t._id%>">View</a></td>
+          </tr>
+          <% }%>
+        </tbody>
+      </table>
+    </div>
+    <% if(transactions.length < 1) {%>
+    <div class="text-center py-3 text-muted">Nothing yet</div>
+    <% } %>
+  </div>
+</div>

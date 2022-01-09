@@ -1,0 +1,128 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="container py-5">
+  <h2>New Transaction</h2>
+
+  <form action="/transactions" method="POST" novalidate class="validated-form">
+    <div class="card my-3 p-4">
+      <div class="card shadow p-4" style="max-width: 480px">
+        <div>
+          <div class="mb-3 row">
+            <label for="stakeholderSelect" class="col-sm-4 col-form-label"><b>Supplier</b></label>
+            <div class="col-sm-8">
+              <select class="form-select" id="stakeholderSelect" name="transaction[stakeholder]" required>
+                <option value="" disabled selected hidden>Select supplier/customer</option>
+                <% for(const s of stakeholders) {%>
+                <option value="<%=s._id%>"><%=s.name%></option>
+                <% } %>
+              </select>
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="dateSelect" class="col-sm-4 col-form-label"><b>Date</b></label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="dateSelect" value="<%=new Date().toDateString()%>" disabled />
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="userSelect" class="col-sm-4 col-form-label"><b>Created by</b></label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="userSelect" value="currentUser" disabled />
+            </div>
+          </div>
+          <div class="mb-3">
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="transaction[type]" id="radio2" value="sale" required />
+              <label class="form-check-label" for="radio2">Sale</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="transaction[type]" id="radio1" value="purchase" />
+              <label class="form-check-label" for="radio1">Purchase</label>
+            </div>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="transaction[isStockAdjustment]" id="check1" value="true" disabled />
+            <label class="form-check-label" for="check1">Stock adjustment</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-body">
+        <div class="table-responsive-xxl py-4">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col" style="min-width: 250px">Product name</th>
+                <th scope="col" style="min-width: 100px">Quantity</th>
+                <th scope="col" style="min-width: 160px">Purchase price</th>
+                <th scope="col" style="min-width: 200px">Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="transaction-item">
+                <th scope="row">1</th>
+                <td>
+                  <select class="form-select" id="productSelect" name="transaction[items][0][product]" required>
+                    <option value="" disabled selected hidden>Select a product</option>
+                    <% for(const p of products) {%>
+                    <option value="<%=p._id%>"><%=p.name%></option>
+                    <% } %>
+                  </select>
+                </td>
+                <td><input class="form-control" type="number" min="0" name="transaction[items][0][quantity]" id="quantityInput" placeholder="0" style="width: 96px" required /></td>
+                <td>
+                  <div class="input-group">
+                    <span class="input-group-text">₦</span>
+                    <input class="form-control" type="number" min="0" name="transaction[items][0][purchasePrice]" id="purchasePriceInput" placeholder="0.00" style="width: 96px" required />
+                  </div>
+                </td>
+                <td id="amountDisplay">₦0.00</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="text-end">
+          <input type="submit" class="btn btn-success" value="Create invoice +" />
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<script src="/js/validateForms.js"></script>
+
+<script>
+  const items = Array.from(document.querySelectorAll('#transaction-item'));
+
+  for (const item of items) {
+    const qtyEl = document.querySelector('#quantityInput'),
+      purchasePriceEl = document.querySelector('#purchasePriceInput'),
+      amountEl = document.querySelector('#amountDisplay');
+
+    purchasePriceEl.addEventListener('input', (e) => {
+      const purchasePriceValue = +e.target.value;
+      const qtyValue = +qtyEl.value;
+
+      const amountValue = purchasePriceValue * qtyValue;
+      displayAmount(amountEl, amountValue);
+    });
+
+    qtyEl.addEventListener('input', (e) => {
+      const qtyValue = +e.target.value;
+      const purchasePriceValue = +purchasePriceEl.value;
+
+      const amountValue = purchasePriceValue * qtyValue;
+      displayAmount(amountEl, amountValue);
+    });
+  }
+
+  function addCommas(num) {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  }
+
+  function displayAmount(el, value) {
+    el.innerHTML = `₦${addCommas(value)}`;
+  }
+</script>

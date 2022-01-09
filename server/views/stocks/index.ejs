@@ -1,0 +1,76 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="container mt-3 mb-5">
+  <h1>Stock</h1>
+  <div class="mt-3">
+    <a href="/stocks/new" class="btn btn-primary">Add new stock+</a>
+    <a href="#" class="btn btn-outline-success" onClick="window.location.reload();">Refresh stock</a>
+  </div>
+
+  <h4 class="mt-4 text-danger">Lastest stock entries</h4>
+  <div class="row">
+    <% for(const s of stocks) {%>
+    <div class="col-lg-6">
+      <a href="/stocks/<%=s._id%>" class="list-group-item list-group-item-action border-primary" aria-current="true">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1"><%=s.supplier.name%></h5>
+          <small><%=s.purchaseTime.toDateString()%></small>
+        </div>
+        <p class="mb-1">
+          <%s.items.forEach(item => {%>
+          <small><%=item.product.name%> •</small>
+          <% }) %>
+        </p>
+        <small>#<%=s._id%> </small>
+      </a>
+    </div>
+    <% } %>
+  </div>
+
+  <div class="my-4 input-group" style="max-width: 30em">
+    <span class="input-group-text bg-warning" id="basic-addon1"><i class="bi bi-search"></i></span>
+    <input class="form-control" list="datalistOptions" id="productNames" placeholder="Enter product name..." />
+    <datalist id="datalistOptions">
+      <% for(const product of products) {%>
+      <option value="<%=product.name%>"><% } %></option>
+    </datalist>
+  </div>
+
+  <div class="row">
+    <% for(const p of products) {%>
+    <div class="card shadow mb-3 mx-auto" style="max-width: 19em; padding: 0">
+      <img src="<%=p.image%>" class="card-img-top" alt="product_image" />
+      <div class="card-header"><%=p.name%></div>
+      <div class="card-body">
+        <h4 class="card-title">Stock: <%=p.inventory%></h4>
+        <p class="text-muted">Last updated x mins ago</p>
+        <a href="/products/<%=p._id%>" class="btn btn-primary btn-sm">View entries</a>
+        <a href="#" class="btn btn-outline-secondary btn-sm"> <i class="bi bi-plus"></i> Add new </a>
+      </div>
+    </div>
+    <% } %>
+  </div>
+</div>
+
+<script>
+  const filterInput = document.querySelector('#productNames');
+
+  function filterProduct(e) {
+    const term = e.target.value.toLowerCase();
+    const productss = document.querySelectorAll('.card');
+    console.log(term);
+
+    productss.forEach((product) => {
+      const productName = product.querySelector('.card-header').innerText.toLowerCase();
+
+      if (productName.indexOf(term) > -1) {
+        product.style.display = 'inline-block';
+      } else {
+        product.style.display = 'none';
+        console.log(product);
+      }
+    });
+  }
+
+  filterInput.addEventListener('input', filterProduct);
+</script>

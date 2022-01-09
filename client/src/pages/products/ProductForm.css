@@ -1,0 +1,41 @@
+.ProductForm {
+  background-color: #000000e5;
+  backdrop-filter: blur(4px);
+  z-index: 1200;
+  position: fixed;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  top: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--text-white);
+  border-top-left-radius: 1em;
+  border-top-right-radius: 1em;
+  padding: 4em 0;
+  overflow-y: auto;
+  animation: slideup 250ms ease;
+}
+
+.ProductForm-form {
+  background-color: #fff;
+  color: var(--text-black);
+  border-radius: 12px;
+}
+
+@keyframes slideup {
+  from {
+    opacity: 0.6;
+    top: 50%;
+  }
+  to {
+    opacity: 1;
+    top: 5%;
+  }
+}
+
+@media (max-width: 700px) {
+  .ProductForm {
+  }
+}

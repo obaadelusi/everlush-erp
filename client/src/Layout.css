@@ -1,0 +1,12 @@
+.Layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.Layout-page {
+  flex: 1 1 0%;
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  overflow-x: hidden;
+}

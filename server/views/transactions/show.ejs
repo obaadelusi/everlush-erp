@@ -1,0 +1,72 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="container-xl mt-5">
+    <div class="my-3">
+        <a href="/transactions"><i class="bi bi-arrow-left"></i>All transactions</a>
+     </div>
+    <div class="card p-5 pb-4 col-md-8 offset-md-2">
+        <div class="text-end">
+            <h1 class="card-title mb-4"><%=t.stakeholder.name%></h1>
+            <p class="card-subtitle mb-1"><b><%=t.createdAt.toDateString()%></b></p>
+            <p>Added by: <b><%=t.createdBy%></p></b>
+            <small class="text-muted"><%= t.paidFull ? "Fully paid" : "Partly paid"%> </small>
+        </div>
+        <hr>
+
+        <div class="card-body d-flex justify-content-between">
+            <div>
+                <small class="text-muted">Delivered from</small>
+                <p class="card-subtitle mt-1 mb-0">
+                    <%=t.stakeholder.contacts[0].street%>
+                </p>
+                <p class="card-subtitle mb-1">
+                    <%=t.stakeholder.contacts[0].state%>,
+                    <%=t.stakeholder.contacts[0].country%>
+                </p>
+                <% if(t.stakeholder.contacts[0].phones.length) {%> 
+                <p class="card-subtitle mb-2"><%=t.stakeholder.contacts[0].phones[0]%></p>
+                <% } %> 
+            </div>
+            <div class="text-end">
+                <small class="text-muted">Delivered to</small>
+                <p class="card-subtitle mt-1 mb-0">UserModel.address Way</p>
+                <p class="card-subtitle mb-1">Lagos, Nigeria</p>
+                <p class="card-subtitle mb-2">0803 696 0995</p>
+            </div>
+        </div>
+        <hr>
+
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Item</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Purchase price</th>
+                            <th scope="col">Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% function addCommas(num){
+                            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+                        } %>
+                        <% t.items.forEach(item => { %>
+                        <tr>
+                            <td style="text-transform: capitalize;"><%=item.product.name%> </td>
+                            <td><%=item.quantity%></td>
+                            <td>₦<%=item.purchasePrice || item.sellingPrice%></td>
+                            <td>₦<%=addCommas((item.purchasePrice || item.sellingPrice) * item.quantity)%></td>
+                        </tr>
+                        <% }) %>
+                        <tr class="table-active">
+                            <th scope="row" colspan="2"></th>
+                            <td><i>Grand Total&rarr;</i></td>
+                            <td><b>₦<%=addCommas(t.total)%></b></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

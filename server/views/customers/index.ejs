@@ -1,0 +1,18 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="container my-5">
+  <h1 class="mb-4">All customers</h1>
+
+  <div class="row">
+    <% for (let customer of customers) { %>
+    <div class="card mb-4 mx-auto" style="width: 18rem; padding: 0">
+      <div class="card-body">
+        <h4 class="card-title"><%=customer.name%></h4>
+        <h5 class="card-subtitle mb-2 text-muted"><%=customer.contacts[0].state%>, <%=customer.contacts[0].country%></h5>
+        <a href="/stakeholders/<%=customer._id%>" class="card-link">Full details</a>
+      </div>
+      <div class="card-footer"><%= customer.isCustomer ? "Customer •" : null%> <%= customer.isSupplier ? "Supplier" : null%></div>
+    </div>
+    <% } %>
+  </div>
+</div>

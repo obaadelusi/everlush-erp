@@ -1,0 +1,46 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="container my-5">
+  <h1 class="mb-4">Sales history</h1>
+
+  <div class="card">
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead class="table-success">
+          <tr>
+            <th scope="col" style="min-width: 140px">Date</th>
+            <th scope="col">Type</th>
+            <th scope="col">Supplier</th>
+            <th scope="col">Products</th>
+            <!-- <th scope="col">Stock left</th> -->
+            <th scope="col">Total</th>
+            <th scope="col">Receipts</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for(const s of sales) {%>
+          <tr>
+            <td>
+              <%=s.createdAt.toDateString()%> <br />
+              <%=s.createdAt.toLocaleTimeString('en-US')%>
+            </td>
+            <td class="text-success"><%=s.type%></td>
+            <td><%=s.stakeholder.name%></td>
+            <td>
+              <% for(const i of s.items) { %>
+              <span><%=i.product.name%> •</span>
+              <% } %>
+            </td>
+            <!-- <td><%//=i.stockLeft%></td> -->
+            <td>₦<%=s.total%></td>
+            <td><a href="/transactions/<%=s._id%>">View</a></td>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+    <% if(sales.length < 1) {%>
+    <div class="text-center py-3 text-muted">Nothing yet</div>
+    <% } %>
+  </div>
+</div>

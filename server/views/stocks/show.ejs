@@ -1,0 +1,70 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="container-xl mt-5">
+    <div class="my-3">
+        <a href="/stocks"><i class="bi bi-arrow-left"></i>All stock entries</a>
+     </div>
+    <div class="card p-5 pb-4 col-md-8 offset-md-2">
+        <div class="text-end">
+            <h1 class="card-title mb-4"><%=stock.supplier.name%></h1>
+            <p class="card-subtitle mb-1"><b><%=stock.purchaseTime.toDateString()%></b></p>
+            <p>Added by: <b><%=stock.createdBy%></p></b>
+            <small class="text-muted">Paid</small>
+        </div>
+        <hr>
+
+        <div class="card-body d-flex justify-content-between">
+            <div>
+                <small class="text-muted">Delivered from</small>
+                <p class="card-subtitle mt-1 mb-0">
+                    <%=stock.supplier.addresses[0].officeAddress%>
+                </p>
+                <p class="card-subtitle mb-1">
+                    <%=stock.supplier.addresses[0].state%>,
+                    <%=stock.supplier.addresses[0].country%>
+                </p>
+                <% if(stock.supplier.contacts.length) {%> 
+                <p class="card-subtitle mb-2"><%=stock.supplier.contacts[0].phones[0]%></p>
+                <% } %> 
+            </div>
+            <div class="text-end">
+                <small class="text-muted">Delivered to</small>
+                <p class="card-subtitle mt-1 mb-0">UserModel.address Way</p>
+                <p class="card-subtitle mb-1">Lagos, Nigeria</p>
+                <p class="card-subtitle mb-2">0803 696 0995</p>
+            </div>
+        </div>
+        <hr>
+
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Item</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% function addCommas(num){
+                        return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+                    } %> 
+                    <% stock.items.forEach(item => { %> 
+                    <tr>
+                        <td scope="row"><%=item.product.name%> </td>
+                        <td><%=item.quantity%></td>
+                        <td>₦<%=addCommas(item.purchasePrice)%></td>
+                        <td>₦<%=addCommas(item.purchasePrice * item.quantity)%></td>
+                    </tr>
+                    <% }) %>
+                    <tr class="table-active">
+                        <th scope="row" colspan="2"></th>
+                        <td><i>Total</i></td>
+                        <td><b>₦<%=addCommas(stock.total)%></b></td>
+                    </tr> 
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

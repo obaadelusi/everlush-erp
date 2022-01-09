@@ -1,0 +1,72 @@
+.Table {
+  vertical-align: middle;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.Table-header {
+  padding: 1em 2em 0.5em;
+  width: 100%;
+}
+
+.Table > thead {
+  vertical-align: bottom;
+  background-color: var(--grey-100);
+  text-align: left;
+  /* border-top: 1px solid #000; */
+  border-bottom: 1px solid #000;
+}
+
+.Table tbody {
+  border-bottom: 1px solid var(--grey-200);
+}
+
+thead,
+th,
+tbody,
+tr,
+td,
+tfoot {
+  border-width: 0;
+  border-style: solid;
+  border-color: inherit;
+}
+
+.Table td,
+.Table th {
+  padding: 0.5em;
+  min-width: 80px;
+}
+
+.Table tr > td {
+  height: 60px;
+}
+
+.Table tbody tr:nth-child(2n) {
+  background-color: var(--grey-100);
+}
+
+/* Transactions Table on Product Page */
+.TransactionsTable {
+  max-width: 1100px;
+  overflow-x: auto;
+  border: 1px solid var(--bg-primary);
+  border-radius: 8px;
+}
+
+.TransactionsTable p {
+  text-align: center;
+  margin: 1em;
+}
+
+.Transactions-sale {
+  background-color: var(--clr-success-200);
+}
+
+.Transactions-purchase {
+  background-color: var(--clr-primary-200);
+}
+
+.Transactions-adjustment {
+  background-color: var(--clr-danger-200);
+}

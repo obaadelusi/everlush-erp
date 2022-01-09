@@ -1,0 +1,87 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="container my-5">
+  <div>
+    <a href="/stakeholders/<%=stakeholder._id%>"><i class="bi bi-arrow-left"></i> Back</a>
+  </div>
+  <div class="row">
+    <h1 class="text-center mb-4">Edit stakeholder</h1>
+
+    <div class="col-md-6 offset-md-3">
+      <form action="/stakeholders/<%=stakeholder._id%>?_method=PUT" method="POST" novalidate class="validated-form">
+        <div class="mb-3 d-flex justify-content-between">
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="customer" <%=stakeholder.isSupplier ? "checked disabled" : null%> name="stakeholder[isSupplier]" value="true" >
+            <label class="form-check-label" for="customer">
+              <% if(stakeholder.isSupplier) {%>
+              <b><%=stakeholder.name%></b> is a supplier. <% } else {%> Is <i><%=stakeholder.name%></i> also a supplier? <% } %>
+            </label>
+          </div>
+          <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="supplier" <%=stakeholder.isCustomer ? "checked disabled" : null%> name="stakeholder[isCustomer]" value="true" >
+            <label class="form-check-label" for="customer">
+              <% if(stakeholder.isCustomer) {%>
+              <b><%=stakeholder.name%></b> is a customer. <% } else {%> Is <i><%=stakeholder.name%></i> also a customer? <% } %>
+            </label>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="name" class="form-label">Business name</label>
+          <input type="text" id="name" class="form-control" name="stakeholder[name]" value="<%=stakeholder.name%>" required />
+          <div class="invalid-feedback">Enter a name</div>
+        </div>
+        <div class="mb-3">
+          <label for="phones" class="form-label">Phone number</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-telephone"></i></span>
+            <input id="phones" type="text" class="form-control" name="stakeholder[contacts][phones][0]" aria-label="Phone number" placeholder="Enter one phone number..." value="<%=stakeholder.contacts[0].phones[0]%>" required />
+            <div class="invalid-feedback">Enter phone number</div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <div class="input-group">
+            <span class="input-group-text">@</span>
+            <input type="email" id="email" class="form-control" name="stakeholder[contacts][emails][0]" value="<%=stakeholder.contacts[0].emails[0]%>" />
+          </div>
+        </div>
+        <!-- Address -->
+        <div class="mb-3">
+          <label for="officeAddress" class="form-label"> Office Address</label>
+          <input type="text" id="category" class="form-control" name="stakeholder[contacts][street]" value="<%=stakeholder.contacts[0].street%>" required />
+          <div class="invalid-feedback">Street address</div>
+        </div>
+
+        <div class="mb-3">
+          <label for="state" class="form-label">State</label>
+          <input type="text" id="state" class="form-control" name="stakeholder[contacts][state]" value="<%=stakeholder.contacts[0].state%>" required />
+          <div class="invalid-feedback">State</div>
+        </div>
+
+        <div class="mb-3">
+          <label for="country" class="form-label">Country</label>
+          <input type="text" id="country" class="form-control" name="stakeholder[contacts][country]" value="<%=stakeholder.contacts[0].country%>" required />
+          <div class="invalid-feedback">Enter delivery country</div>
+        </div>
+        <!------------ For image upload ---------->
+        <!-- <div class="mb-3">
+               <label for="image" class="form-label">Add images</label>
+               <input
+                  type="file"
+                  name="image"
+                  class="form-control"
+                  id="image"
+                  multiple
+               />
+            </div> -->
+        <!----------------- ^^^^^^^^^^ ------------------->
+
+        <div class="mb-3">
+          <button class="btn btn-success">Update business</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="/js/validateForms.js"></script>

@@ -1,0 +1,63 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="container my-5">
+  <div class="row">
+    <div class="card mb-4 mx-auto" style="width: 30rem; padding: 0">
+      <div class="card-body">
+        <h3 class="card-title"><%=stakeholder.name%></h3>
+        <h5 class="card-subtitle text-muted"><%=stakeholder.contacts[0].state%>, <%=stakeholder.contacts[0].country%></h5>
+      </div>
+      <div class="card-header">
+        <i class="bi bi-person"></i>
+        <%=stakeholder.isCustomer && stakeholder.isSupplier ? "Customer •" : null%> <%=stakeholder.isSupplier ? "Supplier" : "Customer"%>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><i class="bi bi-house"></i> <%=stakeholder.contacts[0].street%>, <%=stakeholder.contacts[0].state%>, <%=stakeholder.contacts[0].country%></li>
+        <li class="list-group-item"><i class="bi bi-telephone"></i> <%=stakeholder.contacts[0].phones[0]%></li>
+        <li class="list-group-item"><i class="bi bi-at"></i> <%=stakeholder.contacts[0].emails[0]%></li>
+      </ul>
+      <div class="card-body">
+        <a href="/stakeholders/<%=stakeholder._id%>/edit" class="card-link btn btn-info btn-sm">Edit </a>
+        <form action="/stakeholders/<%=stakeholder._id%>?_method=DELETE" method="POST" class="d-inline">
+          <button class="btn btn-outline-danger btn-sm">Delete</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <% function addCommas(num){ return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') }; const options = { timeZone: 'UTC', timeZoneName: 'short' };%>
+
+  <div class="card">
+    <h4 class="p-3">Transactions</h4>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead class="table-secondary">
+          <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Products</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Type</th>
+            <th scope="col">Receipts</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for(const t of transactions) {%>
+          <tr>
+            <td>
+              <%=t.createdAt.toDateString()%> <br />
+              <%=t.createdAt.toLocaleTimeString('en-US')%>
+            </td>
+            <td><%for(const i of t.items){ %> <%=i.product.name%> • <% }%></td>
+            <td>₦<%=addCommas(t.total)%></td>
+            <td><%=t.type%></td>
+            <td><a href="/transactions/<%=t._id%>">View</a></td>
+          </tr>
+          <% }%>
+        </tbody>
+      </table>
+      <% if(transactions.length < 1) {%>
+      <div class="text-center py-3 text-muted">Nothing yet</div>
+      <% } %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="container my-5">
+  <h1 class="mb-4">All suppliers</h1>
+
+  <div class="row">
+    <% for (let stakeholder of stakeholders) { %>
+    <div class="card mb-4 mx-auto" style="width: 18rem; padding: 0">
+      <div class="card-body">
+        <h4 class="card-title"><%=stakeholder.name%></h4>
+        <h5 class="card-subtitle mb-2 text-muted"><%=stakeholder.contacts[0].state%>, <%=stakeholder.contacts[0].country%></h5>
+        <a href="/stakeholders/<%=stakeholder._id%>" class="card-link">Full details</a>
+      </div>
+      <div class="card-footer"><%= stakeholder.isSupplier ? "Supplier •" : null%> <%= stakeholder.isCustomer ? "Customer" : null%></div>
+    </div>
+    <% } %>
+  </div>
+</div>

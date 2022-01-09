@@ -1,0 +1,72 @@
+<% layout('layouts/boilerplate') %>
+<link rel="stylesheet" href="/css/index.css" />
+
+<style>
+  .card-title {
+    text-transform: capitalize;
+  }
+</style>
+
+<div class="container my-5">
+  <h1 class="mb-4">All products <span class="text-muted">(<%=products.length%>)</span></h1>
+
+  <div class="accordion my-5" id="productAccordion">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Deactivated Products</button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#productAccordion">
+        <div class="accordion-body row">
+          <%for (const product of products) { if(!product.isActive) {%>
+          <div class="card shadow mb-4 mx-auto" style="max-width: 22rem; padding: 0">
+            <div class="position-relative">
+              <span class="position-absolute top-0 end-0 badge rounded-pill bg-secondary mt-3 me-3">Deactivated</span>
+            </div>
+            <div class="card-body">
+              <h4 class="card-title"><%=product.name%></h4>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <a href="/products/<%=product._id%>" class="btn btn-secondary"> View </a>
+              </li>
+            </ul>
+          </div>
+          <% }} %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%function addCommas(num) { return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','); }%>
+
+  <div class="row">
+    <% products.forEach(product => { if (product.isActive) {%>
+    <div class="card shadow mb-4 mx-auto" style="max-width: 22rem; padding: 0">
+      <div class="image-container">
+        <img src="<%=product.image%>" class="card-img-top" alt="" />
+      </div>
+
+      <div class="card-body">
+        <h3 class="card-title"><%=product.name%></h3>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Selling price: ₦<%=addCommas(product.sellingPrice)%></li>
+        <li class="list-group-item">
+          <% if (product.inventory <= product.lowStock) {%>
+          <span class="badge rounded-pill bg-danger">Low stock </span>
+          <% } else {%>
+          <span class="badge rounded-pill bg-success">In stock </span>
+          <% } %> &nbsp; Stock: <%=product.inventory%>
+        </li>
+        <li class="list-group-item">
+          <a href="/products/<%=product._id%>" class="btn btn-primary"> View <%=product.name%> </a>
+        </li>
+      </ul>
+      <small class="card-footer text-muted">
+        <i class="bi bi-tags-fill"></i>
+        <%=product.category%>
+      </small>
+    </div>
+    <% }}) %>
+  </div>
+</div>
