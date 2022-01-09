@@ -7,7 +7,7 @@ import './ProductForm.css';
 import Alert from '../../components/shared/Alert';
 
 function EditProduct() {
-  let productId = useParams().productId;
+  const productId = useParams().productId;
   const [product, setProduct] = useState({});
   const [message, setMessage] = useState('');
 
@@ -19,7 +19,7 @@ function EditProduct() {
         .catch((err) => console.error(err));
     };
     getProduct();
-  }, []);
+  }, [productId]);
 
   const handleChange = () => {
     setMessage('Click Update after changing value');

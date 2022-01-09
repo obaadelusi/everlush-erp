@@ -26,7 +26,7 @@ const ProductPage = () => {
     };
     getProduct();
     window.scrollTo(0, 0);
-  }, []);
+  }, [productId]);
 
   const itemList = [];
   let quantity;
