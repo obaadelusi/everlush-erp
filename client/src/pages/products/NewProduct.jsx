@@ -46,14 +46,14 @@ function NewProduct() {
   return (
     <div className="ProductForm">
       <div>
-        <Link to="https://everlush-erp.herokuapp.com/products" className="Form-close">
+        <Link to="/products" className="Form-close">
           <i className="bx bx-x"></i> &nbsp;&nbsp; Exit
         </Link>
       </div>
       <div className="Form-header">
         <h2>Create New Product</h2>
       </div>
-      <form action="/products" method="POST" className="Form ProductForm-form">
+      <form action="https://everlush-erp.herokuapp.com/products" method="POST" className="Form ProductForm-form">
         <div className="Form-input-group">
           <label htmlFor="name">Product name</label>
           <input type="text" id="name" name="product[name]" autoFocus value={name} onChange={handleChange} required />

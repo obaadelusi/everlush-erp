@@ -38,7 +38,7 @@ function EditProduct() {
         <h2>Edit Product</h2>
       </div>
       {message && <Alert type="danger">{message}</Alert>}
-      <form action={`/products/${productId}?_method=PUT`} method="POST" className="Form ProductForm-form">
+      <form action={`https://everlush-erp.herokuapp.com/products/${productId}?_method=PUT`} method="POST" className="Form ProductForm-form">
         {product.isActive ? (
           <div className="Form-check-group">
             <label htmlFor="activeSwitch">
