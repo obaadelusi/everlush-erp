@@ -27,7 +27,7 @@ const CustomerPage = () => {
   const itemList = [];
 
   function insertData() {
-    transactions.map((t, i) => {
+    transactions.forEach((t, i) => {
       let total = 0;
       for (const item of t.items) {
         const price = item.purchasePrice || item.sellingPrice;
@@ -51,6 +51,7 @@ const CustomerPage = () => {
         </tr>
       );
     });
+    return;
   }
 
   insertData();
