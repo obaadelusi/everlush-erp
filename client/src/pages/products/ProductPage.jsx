@@ -1,4 +1,5 @@
 import ProductDisplay from '../../components/ProductDisplay';
+import Table from '../../components/shared/Table';
 import addCommas from '../../assets/utils/addCommas';
 
 import './ProductPage.css';
@@ -6,17 +7,18 @@ import '../../components/shared/Table.css';
 // import TransactionsTable from '../components/shared/TransactionsTable';
 
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { Outlet } from 'react-router-dom';
+import { useParams, Outlet } from 'react-router-dom';
 
 const ProductPage = () => {
-  const productId = useParams().productId;
+  const { pId } = useParams();
   const [product, setProduct] = useState({});
   const [transactions, setTransactions] = useState([]);
 
+  // https://everlush-erp.herokuapp.com
+
   useEffect(() => {
     const getProduct = async () => {
-      fetch(`https://everlush-erp.herokuapp.com/products/${productId}`)
+      fetch(`/products/${pId}`)
         .then((res) => res.json())
         .then((data) => {
           setTransactions(data.transactions);
@@ -26,7 +28,7 @@ const ProductPage = () => {
     };
     getProduct();
     window.scrollTo(0, 0);
-  }, [productId]);
+  }, [pId]);
 
   const itemList = [];
   let quantity;
@@ -72,28 +74,21 @@ const ProductPage = () => {
 
       <ProductDisplay id={product._id} name={product.name} image={product.image} desc={product.description} isActive={product.isActive} category={product.category} stock={product.inventory} lowStock={product.lowStock} sPrice={product.sellingPrice} />
 
-      {/* Transactions Table */}
-      <div className="TransactionsTable">
-        <div className="Table-header">
-          <h2 className="text-display">Stock History</h2>
-        </div>
-        <table className="Table">
-          <thead>
-            <tr>
-              <th scope="col">Date</th>
-              <th scope="col">Type</th>
-              <th scope="col">Customer/Supplier</th>
-              <th scope="col">Quantity</th>
-              <th scope="col">Price</th>
-              <th scope="col">Previous stock</th>
-              <th scope="col">Stock left</th>
-              <th scope="col">Receipt</th>
-            </tr>
-          </thead>
-          <tbody>{itemList}</tbody>
-        </table>
-        {transactions.length === 0 && <p>No transactions yet.</p>}
-      </div>
+      <Table title="Stock History" dataLength={transactions.length}>
+        <thead>
+          <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Type</th>
+            <th scope="col">Customer/Supplier</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Price</th>
+            <th scope="col">Previous stock</th>
+            <th scope="col">Stock left</th>
+            <th scope="col">Receipt</th>
+          </tr>
+        </thead>
+        <tbody>{itemList}</tbody>
+      </Table>
     </div>
   );
 };

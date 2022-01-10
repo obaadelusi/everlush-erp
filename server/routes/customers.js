@@ -8,7 +8,6 @@ const Customer = require('../models/Stakeholder');
 // Show all customers
 router.get('/', async (req, res) => {
   const { skip, limit } = req.query;
-  console.log(skip, limit);
   const customers = await Customer.find({ isCustomer: true })
     .skip(+skip)
     .limit(+limit)

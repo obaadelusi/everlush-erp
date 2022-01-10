@@ -11,7 +11,7 @@ const Header = () => {
 
       <ul className="Header-links">
         <li>
-          <Link to="#new-sale">+ New Sale</Link>
+          <Link to="/sales/new">+ New Sale</Link>
         </li>
         <li>
           <Link to="/purchases/new">+ New Purchase</Link>

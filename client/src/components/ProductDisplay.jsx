@@ -1,7 +1,7 @@
 import PageTitle from './PageTitle';
 import StockBadge from './shared/StockBadge';
 import ActiveBadge from './shared/ActiveBadge';
-import Button from './shared/Button';
+import { LinkButton } from './shared/Buttons';
 import addCommas from '../assets/utils/addCommas';
 
 import { Link } from 'react-router-dom';
@@ -27,13 +27,13 @@ const ProductDisplay = ({ id, name, image, desc, isActive, category, stock, lowS
               <h2 className="ProductDisplay-title">Description</h2>
               <p>{desc}</p>
               <div className="ProductDisplay-buttons">
-                <Link to={`/products/${id}/edit`} className="Button Button-main">
+                <LinkButton link={`/products/${id}/edit`}>
                   <i className="bx bxs-edit"></i> &nbsp;
                   {isActive ? 'Edit' : 'Activate'}
-                </Link>
-                <Button link="/transactions/new?type=stockAdjustment" className="outline">
+                </LinkButton>
+                <LinkButton link="/transactions/new?type=stockAdjustment" type="outline">
                   Adjust stock +
-                </Button>
+                </LinkButton>
               </div>
             </div>
           </div>

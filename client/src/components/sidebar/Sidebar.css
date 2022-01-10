@@ -74,12 +74,18 @@
 }
 
 .Sidebar-link:hover {
-  background-color: skyblue;
+  background-color: var(--second-color);
+  color: #fff;
 }
 
 .Sidebar-link i {
   vertical-align: text-bottom;
   font-size: 1.25rem;
+}
+
+.Sidebar-link-active .Sidebar-link {
+  background-color: #fff;
+  color: var(--main-color);
 }
 
 .Sidebar-copy {

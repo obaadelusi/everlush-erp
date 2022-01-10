@@ -36,9 +36,10 @@ router.get('/:id', async (req, res) => {
   const { id } = req.params;
 
   const stakeholder = await Stakeholder.findById(id);
-  const transactions = await Transaction.find({ stakeholder: id }).populate('items.product').exec();
-
-  res.render('stakeholders/show', { stakeholder, transactions });
+  const transactions = await Transaction.find({ stakeholder: id }).sort({ createdAt: -1 }).populate('items.product').exec();
+  // res.render('stakeholders/show', { stakeholder, transactions });
+  console.log(transactions);
+  res.send({ stakeholder, transactions });
 });
 
 module.exports = router;

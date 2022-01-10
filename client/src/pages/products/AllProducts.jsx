@@ -12,9 +12,11 @@ const Products = () => {
   const [products, setProducts] = useState([]);
   const [showProducts, setShowProducts] = useState('active');
 
+  // https://everlush-erp.herokuapp.com
+
   useEffect(() => {
     const fetchProducts = async () => {
-      fetch('https://everlush-erp.herokuapp.com/products')
+      fetch('/products')
         .then((res) => res.json())
         .then((data) => {
           setAllProducts(data);

@@ -1,77 +1,87 @@
 import { useState, useEffect } from 'react';
+import { Link, NavLink, Outlet } from 'react-router-dom';
 
 import PageTitle from '../../components/PageTitle';
 import './AllCustomers.css';
 
 function AllCustomers() {
   const [skip, setSkip] = useState(0);
+  const [allCustomers, setAllCustomers] = useState([]);
   const [customers, setCustomers] = useState([]);
-  const limit = 8;
+  const [showCustomers, setShowCustomers] = useState('active');
+  const limit = 0;
+
+  // https://everlush-erp.herokuapp.com
 
   useEffect(() => {
     const getCustomers = async () => {
-      fetch(`https://everlush-erp.herokuapp.com/customers?skip=${skip}&limit=${limit}`)
+      fetch(`/customers?skip=${skip}&limit=${limit}`)
         .then((res) => res.json())
-        .then((data) => setCustomers(data))
+        .then((data) => {
+          setAllCustomers(data);
+          setCustomers(data.filter((c) => c.isActive === true));
+        })
         .catch((err) => console.log(err));
     };
     getCustomers();
   }, [skip]);
 
-  const handleClick = (e) => {
-    if (e.currentTarget.id === 'nextBtn') {
-      setSkip((prev) => (prev += limit));
+  const handleChange = (e) => {
+    setShowCustomers(e.currentTarget.value);
+    if (e.currentTarget.value === 'deactivated') {
+      setCustomers(allCustomers.filter((p) => p.isActive === false));
     } else {
-      setSkip((prev) => (prev -= limit));
+      setCustomers(allCustomers.filter((p) => p.isActive === true));
     }
   };
 
-  document.title = 'All Customers - Everlush';
+  // const handleClick = (e) => {
+  //   if (e.currentTarget.id === 'nextBtn') {
+  //     setSkip((prev) => (prev += limit));
+  //   } else {
+  //     setSkip((prev) => (prev -= limit));
+  //   }
+  // };
+
+  document.title = 'Customers - Everlush';
 
   return (
     <div className="AllCustomers">
-      <PageTitle title="Customers" info={customers.length} />
+      <div className="AllCustomers-header">
+        <PageTitle title="Customers" info={customers.length} />
+        <Link to="/customers/new" className="Button Button-primary">
+          Create new +
+        </Link>
+      </div>
 
-      <div className="AllCustomers-table">
-        <table className="Table">
-          <thead>
-            <tr>
-              <th scope="col">Name</th>
-              <th scope="col">Location</th>
-              <th scope="col">Supplier?</th>
-              <th scope="col">Status</th>
-              <th scope="col">View</th>
-            </tr>
-          </thead>
-          <tbody>
-            {customers.map((c, i) => (
-              <tr key={i}>
-                <td>{c.name}</td>
-                <td>
-                  {c.contacts[0].state}, {c.contacts[0].country}
-                </td>
-                <td>{c.isSupplier ? 'Yes' : 'No'}</td>
-                <td>{c.isActive ? 'Active 🟢' : 'Inactive 🟡'}</td>
-                <td>
-                  <a href={`/stakeholders/${c._id}`}>View more</a>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <div className="AllCustomers-nav">
-          <div className="Allcustomers-nav-buttons">
-            <button id="prevBtn" className="prev-btn" onClick={handleClick} disabled={skip === 0}>
-              <i className="bx bx-chevron-left"></i>
-            </button>
-            <button id="nextBtn" className="next-btn" onClick={handleClick} disabled={skip > customers.length}>
-              <i className="bx bx-chevron-right"></i>
-            </button>
+      <div className="AllCustomers-layout">
+        <aside className="AllCustomers-sidebar">
+          <div className="AllCustomers-radios">
+            <div className="AllCustomers-input-group">
+              <input type="radio" name="showActive" id="active" onChange={handleChange} value="active" checked={showCustomers === 'active'} />
+              <label htmlFor="active">Active</label>
+            </div>
+            <div className="AllCustomers-input-group">
+              <input type="radio" name="showActive" id="deactivated" onChange={handleChange} value="deactivated" checked={showCustomers === 'deactivated'} />
+              <label htmlFor="deactivated">Deactivated</label>
+            </div>
           </div>
-          <small className="AllCustomers-nav-text">
-            {skip + (customers.length && 1)} to {customers.length + skip}
-          </small>
-        </div>
+          <ul className="AllCustomers-list">
+            {customers.map((c, i) => (
+              <NavLink key={i} to={`/customers/${c._id}`} className={({ isActive }) => (isActive ? 'AllCustomers-list-item-active' : undefined)}>
+                <li className="AllCustomers-list-item">
+                  <h4>{c.name}</h4>
+                  <p>
+                    {c.contacts[0].state}, {c.contacts[0].country}
+                  </p>
+                  <small>{c.isActive ? 'Active🟢' : 'Inactive🟡'}</small>
+                </li>
+              </NavLink>
+            ))}
+            <div className="AllCustomers-list-end">//---------- End of list -----------//</div>
+          </ul>
+        </aside>
+        <Outlet />
       </div>
     </div>
   );

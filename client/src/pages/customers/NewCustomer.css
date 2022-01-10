@@ -1,0 +1,5 @@
+.NewCustomer {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 5px;
+}

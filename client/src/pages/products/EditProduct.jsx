@@ -7,19 +7,21 @@ import './ProductForm.css';
 import Alert from '../../components/shared/Alert';
 
 function EditProduct() {
-  const productId = useParams().productId;
+  const { pId } = useParams();
   const [product, setProduct] = useState({});
   const [message, setMessage] = useState('');
 
+  // https://everlush-erp.herokuapp.com
+
   useEffect(() => {
     const getProduct = async () => {
-      fetch(`https://everlush-erp.herokuapp.com/products/${productId}/edit`)
+      fetch(`/products/${pId}/edit`)
         .then((res) => res.json())
         .then((data) => setProduct(data))
         .catch((err) => console.error(err));
     };
     getProduct();
-  }, [productId]);
+  }, [pId]);
 
   const handleChange = () => {
     setMessage('Click Update after changing value');
@@ -30,7 +32,7 @@ function EditProduct() {
   return (
     <div className="ProductForm">
       <div>
-        <Link to={`/products/${productId}`} className="Form-close">
+        <Link to={`/products/${pId}`} className="Form-close">
           <i className="bx bx-x"></i> &ensp; Exit
         </Link>
       </div>
@@ -38,7 +40,7 @@ function EditProduct() {
         <h2>Edit Product</h2>
       </div>
       {message && <Alert type="danger">{message}</Alert>}
-      <form action={`https://everlush-erp.herokuapp.com/products/${productId}?_method=PUT`} method="POST" className="Form ProductForm-form">
+      <form action={`https://everlush-erp.herokuapp.com/products/${pId}?_method=PUT`} method="POST" className="Form ProductForm-form">
         {product.isActive ? (
           <div className="Form-check-group">
             <label htmlFor="activeSwitch">

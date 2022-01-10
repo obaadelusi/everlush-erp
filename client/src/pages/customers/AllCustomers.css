@@ -3,7 +3,98 @@
   margin: 1em auto 5em;
 }
 
-.AllCustomers-table {
+.AllCustomers-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.AllCustomers-layout {
+  display: flex;
+  border-radius: 8px;
+  border: 1px solid var(--grey-200);
+  position: relative;
+  height: 740px;
+  overflow: auto;
+}
+
+.AllCustomers-sidebar {
+  flex: 0 0 30%;
+  border-right: 1px solid var(--grey-200);
+  height: 100%;
+  overflow: auto;
+}
+
+.AllCustomers-radios {
+  display: flex;
+  align-items: center;
+  margin: 0.5em 0;
+  background-color: var(--grey-100);
+  padding: 1em;
+}
+
+.AllCustomers-input-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: 2em;
+}
+
+.AllCustomers-radios input {
+  width: 1.25em;
+  height: 1.5em;
+  cursor: pointer;
+}
+
+.AllCustomers-radios label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.AllCustomers-list-end {
+  font-size: 14px;
+  margin: 2em auto;
+  color: var(--grey-200);
+}
+
+.AllCustomers-list a:last-child .AllCustomers-list-item {
+  border-bottom: none;
+}
+
+.AllCustomers-list-item {
+  color: var(--main-color);
+  height: 92px;
+  padding: 1em;
+  position: relative;
+  border-bottom: 1px solid var(--grey-200);
+}
+
+.AllCustomers-list-item:hover,
+.AllCustomers-list-item-active li {
+  background-color: var(--clr-success-100);
+}
+
+.AllCustomers-list-item p {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--grey-300);
+}
+
+.AllCustomers-list-item small {
+  position: absolute;
+  bottom: 16px;
+  right: 10px;
+  font-size: 12px;
+}
+
+@media (max-width: 600px) {
+  .AllCustomers-layout {
+    flex-direction: column;
+  }
+}
+
+/* .AllCustomers-table {
   overflow-x: auto;
   max-width: 1100px;
   border-radius: 6px;
@@ -23,4 +114,4 @@
 
 .AllCustomers tr td:nth-child(4) {
   min-width: 120px;
-}
+} */
