@@ -4,7 +4,6 @@ import addCommas from '../../assets/utils/addCommas';
 
 import './ProductPage.css';
 import '../../components/shared/Table.css';
-// import TransactionsTable from '../components/shared/TransactionsTable';
 
 import { useState, useEffect } from 'react';
 import { useParams, Outlet } from 'react-router-dom';
@@ -18,7 +17,7 @@ const ProductPage = () => {
 
   useEffect(() => {
     const getProduct = async () => {
-      fetch(`/products/${pId}`)
+      fetch(`https://everlush-erp.herokuapp.com/products/${pId}`)
         .then((res) => res.json())
         .then((data) => {
           setTransactions(data.transactions);
