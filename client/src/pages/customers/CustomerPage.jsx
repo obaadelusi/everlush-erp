@@ -26,30 +26,34 @@ const CustomerPage = () => {
 
   const itemList = [];
 
-  transactions.map((t, i) => {
-    let total = 0;
-    for (const item of t.items) {
-      const price = item.purchasePrice || item.sellingPrice;
-      const itemTotal = item.quantity * price;
-      total += itemTotal;
-    }
+  function insertData() {
+    transactions.map((t, i) => {
+      let total = 0;
+      for (const item of t.items) {
+        const price = item.purchasePrice || item.sellingPrice;
+        const itemTotal = item.quantity * price;
+        total += itemTotal;
+      }
 
-    const date = new Date(t.createdAt);
-    itemList.push(
-      <tr key={i}>
-        <td style={{ minWidth: '140px' }}>
-          {date.toDateString()} <br />
-          {date.toLocaleTimeString('en-US')}
-        </td>
-        <td className={t.type === 'sale' ? 'Transactions-sale' : 'Transactions-purchase'}>{t.type}</td>
-        <td>{t.items.map((item, i) => `${item.product.name} •`)}</td>
-        <td>₦{addCommas(total)}</td>
-        <td>
-          <a href={`/transactions/${t._id}`}>View</a>
-        </td>
-      </tr>
-    );
-  });
+      const date = new Date(t.createdAt);
+      itemList.push(
+        <tr key={i}>
+          <td style={{ minWidth: '140px' }}>
+            {date.toDateString()} <br />
+            {date.toLocaleTimeString('en-US')}
+          </td>
+          <td className={t.type === 'sale' ? 'Transactions-sale' : 'Transactions-purchase'}>{t.type}</td>
+          <td>{t.items.map((item, i) => `${item.product.name} •`)}</td>
+          <td>₦{addCommas(total)}</td>
+          <td>
+            <a href={`/transactions/${t._id}`}>View</a>
+          </td>
+        </tr>
+      );
+    });
+  }
+
+  insertData();
 
   return (
     <div className="CustomerPage">

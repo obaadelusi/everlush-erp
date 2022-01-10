@@ -5,10 +5,11 @@ import PageTitle from '../../components/PageTitle';
 import './AllCustomers.css';
 
 function AllCustomers() {
-  const [skip, setSkip] = useState(0);
+  // const [skip, setSkip] = useState(0);
   const [allCustomers, setAllCustomers] = useState([]);
   const [customers, setCustomers] = useState([]);
   const [showCustomers, setShowCustomers] = useState('active');
+  const skip = 0;
   const limit = 0;
 
   // https://everlush-erp.herokuapp.com
@@ -24,7 +25,7 @@ function AllCustomers() {
         .catch((err) => console.log(err));
     };
     getCustomers();
-  }, [skip]);
+  }, []);
 
   const handleChange = (e) => {
     setShowCustomers(e.currentTarget.value);
@@ -78,7 +79,7 @@ function AllCustomers() {
                 </li>
               </NavLink>
             ))}
-            <div className="AllCustomers-list-end">//---------- End of list -----------//</div>
+            <div className="AllCustomers-list-end"> ---------- End of list ---------- </div>
           </ul>
         </aside>
         <Outlet />

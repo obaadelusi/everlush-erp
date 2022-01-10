@@ -4,8 +4,6 @@ import ActiveBadge from './shared/ActiveBadge';
 import { LinkButton } from './shared/Buttons';
 import addCommas from '../assets/utils/addCommas';
 
-import { Link } from 'react-router-dom';
-
 import './ProductDisplay.css';
 
 const ProductDisplay = ({ id, name, image, desc, isActive, category, stock, lowStock, sPrice }) => {
