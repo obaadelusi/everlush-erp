@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import PageTitle from '../../components/PageTitle';
 import ProductCard from '../../components/ProductCard';
+import ProductCardHolder from '../../components/ProductCardHolder';
 import addCommas from '../../assets/utils/addCommas';
 
 import './AllProducts.css';
@@ -57,6 +58,13 @@ const Products = () => {
         </div>
       </div>
       <div className="Products-cards">
+        {products.length === 0 && (
+          <>
+            <ProductCardHolder />
+            <ProductCardHolder />
+            <ProductCardHolder />
+          </>
+        )}
         {products.map((p) => (
           <ProductCard key={p._id} id={p._id} img={p.image} name={p.name} sPrice={addCommas(p.sellingPrice)} stock={p.inventory} lowStock={p.lowStock} category={p.category} isActive={p.isActive} />
         ))}

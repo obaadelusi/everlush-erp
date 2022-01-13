@@ -117,3 +117,48 @@ img.greyscale {
     opacity: 1;
   }
 }
+
+/* Card placeholder - animated*/
+.animated-bg {
+  background: linear-gradient(to right, #ececec 0%, #cedafd 10%, #ececec 20%, #ececec 100%);
+  background-size: 200% 100%;
+  animation: placeholder 1s linear infinite;
+}
+
+.pCard {
+  width: 100%;
+  max-width: 20rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  box-shadow: 2px 4px 15px #00000033;
+  overflow: hidden;
+  margin: auto;
+}
+
+.animated-bg.img {
+  height: 200px;
+  margin-bottom: 1em;
+}
+
+.animated-bg.title {
+  height: 32px;
+  width: 160px;
+  margin: 0 auto 1em 1.5em;
+}
+
+.animated-bg.item {
+  width: 100%;
+  max-width: 220px;
+  height: 16px;
+  margin: 0 auto 1em 1.5em;
+}
+
+@keyframes placeholder {
+  0% {
+    background-position: 50% 0;
+  }
+  100% {
+    background-position: -150% 0;
+  }
+}
