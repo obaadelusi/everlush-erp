@@ -86,6 +86,8 @@
 .Sidebar-link-active .Sidebar-link {
   background-color: #fff;
   color: var(--main-color);
+  position: relative;
+  border-right: 8px solid var(--bg-success);
 }
 
 .Sidebar-copy {

@@ -11,7 +11,8 @@ function CustomerDisplay({ id, isActive, name, contacts, isCustomer, isSupplier 
             <div className="CustomerDisplay-active-badge">
               <ActiveBadge isActive={isActive} />
             </div>
-            <h2 className="CustomerDisplay-title">{name}</h2>
+
+            {!name ? <div className="animated-bg title">&nbsp;</div> : <h2 className="CustomerDisplay-title">{name}</h2>}
             <p className="CustomerDisplay-text">
               <i className="bx bxs-tag-alt"></i>&ensp;
               {isSupplier && isCustomer ? 'Customer & Supplier' : isSupplier ? 'Supplier' : isCustomer ? 'Customer' : null}

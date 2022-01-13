@@ -120,9 +120,18 @@ img.greyscale {
 
 /* Card placeholder - animated*/
 .animated-bg {
-  background: linear-gradient(to right, #ececec 0%, #cedafd 10%, #ececec 20%, #ececec 100%);
+  background: linear-gradient(to right, #ececec 0%, #dfe7ff 10%, #ececec 20%, #ececec 100%);
   background-size: 200% 100%;
   animation: placeholder 1s linear infinite;
+}
+
+@keyframes placeholder {
+  0% {
+    background-position: 20% 0;
+  }
+  100% {
+    background-position: -120% 0;
+  }
 }
 
 .pCard {
@@ -136,29 +145,23 @@ img.greyscale {
   margin: auto;
 }
 
+.pCard-body {
+  padding: 1em 1.5em;
+}
+
 .animated-bg.img {
   height: 200px;
-  margin-bottom: 1em;
 }
 
 .animated-bg.title {
   height: 32px;
   width: 160px;
-  margin: 0 auto 1em 1.5em;
+  margin-bottom: 1em;
 }
 
 .animated-bg.item {
   width: 100%;
   max-width: 220px;
   height: 16px;
-  margin: 0 auto 1em 1.5em;
-}
-
-@keyframes placeholder {
-  0% {
-    background-position: 50% 0;
-  }
-  100% {
-    background-position: -150% 0;
-  }
+  margin-bottom: 1em;
 }
