@@ -1,58 +1,58 @@
 <% layout('layouts/boilerplate') %>
 
 <div class="container my-5">
-  <div class="row">
-    <h1 class="text-center mb-4">Add a new customer</h1>
-    <div class="col-md-6 offset-md-3">
-      <form action="/customers" method="POST" novalidate class="validated-form">
-        <div class="mb-3 d-flex justify-content-end">
-          <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" role="switch" id="customer" name="customer[isSupplier]" value="true" />
-            <label class="form-check-label" for="customer"> Is this customer also a supplier?</label>
-          </div>
-        </div>
-        <div class="mb-3">
-          <label for="name" class="form-label">Customer name</label>
-          <input type="text" id="name" class="form-control" name="customer[name]" required />
-          <div class="invalid-feedback">Enter the customer name.</div>
-        </div>
-        <div class="mb-3">
-          <label for="phones" class="form-label">Phone number</label>
-          <div class="input-group">
-            <span class="input-group-text">
-              <i class="bi bi-telephone"></i>
-            </span>
-            <input type="text" id="phones" class="form-control" placeholder="Enter one phone number..." aria-label="Phone number" name="customer[contacts][phones][0]" required />
-            <div class="invalid-feedback">Enter customer phone number</div>
-          </div>
-        </div>
-        <div class="mb-3">
-          <label for="email" class="form-label">Email</label>
-          <div class="input-group">
-            <span class="input-group-text">@</span>
-            <input type="text" id="email" class="form-control" name="customer[contacts][emails][0]" />
-          </div>
-        </div>
-        <!-- Address -->
-        <div class="mb-3">
-          <label for="officeAddress" class="form-label">Street Address</label>
-          <input type="text" id="category" class="form-control" name="customer[contacts][street]" required />
-          <div class="invalid-feedback">Add delivery address</div>
-        </div>
+   <div class="row">
+      <h1 class="text-center mb-4">Add a new customer</h1>
+      <div class="col-md-6 offset-md-3">
+         <form action="/customers" method="POST" novalidate class="validated-form">
+            <div class="mb-3 d-flex justify-content-end">
+               <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" role="switch" id="customer" name="customer[isSupplier]" value="true" />
+                  <label class="form-check-label" for="customer"> Is this customer also a supplier?</label>
+               </div>
+            </div>
+            <div class="mb-3">
+               <label for="name" class="form-label">Customer name</label>
+               <input type="text" id="name" class="form-control" name="customer[name]" required />
+               <div class="invalid-feedback">Enter the customer name.</div>
+            </div>
+            <div class="mb-3">
+               <label for="phones" class="form-label">Phone number</label>
+               <div class="input-group">
+                  <span class="input-group-text">
+                     <i class="bi bi-telephone"></i>
+                  </span>
+                  <input type="text" id="phones" class="form-control" placeholder="Enter one phone number..." aria-label="Phone number" name="customer[contacts][phones][0]" required />
+                  <div class="invalid-feedback">Enter customer phone number</div>
+               </div>
+            </div>
+            <div class="mb-3">
+               <label for="email" class="form-label">Email</label>
+               <div class="input-group">
+                  <span class="input-group-text">@</span>
+                  <input type="text" id="email" class="form-control" name="customer[contacts][emails][0]" />
+               </div>
+            </div>
+            <!-- Address -->
+            <div class="mb-3">
+               <label for="officeAddress" class="form-label">Street Address</label>
+               <input type="text" id="officeAddress" class="form-control" name="customer[contacts][street]" required />
+               <div class="invalid-feedback">Add delivery address</div>
+            </div>
 
-        <div class="mb-3">
-          <label for="state" class="form-label">State</label>
-          <input type="text" id="state" class="form-control" name="customer[contacts][state]" required />
-          <div class="invalid-feedback">Enter delivery state</div>
-        </div>
+            <div class="mb-3">
+               <label for="state" class="form-label">State</label>
+               <input type="text" id="state" class="form-control" name="customer[contacts][state]" required />
+               <div class="invalid-feedback">Enter delivery state</div>
+            </div>
 
-        <div class="mb-3">
-          <label for="country" class="form-label">Country</label>
-          <input type="text" id="country" class="form-control" name="customer[contacts][country]" required />
-          <div class="invalid-feedback">Enter delivery country</div>
-        </div>
-        <!------------ For image upload ---------->
-        <!-- <div class="mb-3">
+            <div class="mb-3">
+               <label for="country" class="form-label">Country</label>
+               <input type="text" id="country" class="form-control" name="customer[contacts][country]" required />
+               <div class="invalid-feedback">Enter delivery country</div>
+            </div>
+            <!------------ For image upload ---------->
+            <!-- <div class="mb-3">
                <label for="image" class="form-label">Add images</label>
                <input
                   type="file" id="image" class="form-control"
@@ -60,21 +60,21 @@
                   multiple
                />
             </div> -->
-        <!----------------- ^^^^^^^^^^ ------------------->
+            <!----------------- ^^^^^^^^^^ ------------------->
 
-        <div class="mb-3">
-          <button class="btn btn-success">Create customer</button>
-        </div>
-      </form>
+            <div class="mb-3">
+               <button class="btn btn-success">Create customer</button>
+            </div>
+         </form>
 
-      <div>
-        <a href="/products"
-          ><i class="bi bi-arrow-left"></i>
-          All products
-        </a>
+         <div>
+            <a href="/products"
+               ><i class="bi bi-arrow-left"></i>
+               All products
+            </a>
+         </div>
       </div>
-    </div>
-  </div>
+   </div>
 </div>
 
 <script src="/js/validateForms.js"></script>

@@ -59,7 +59,7 @@ const Sidebar = () => {
                </NavLink>
                <NavLink to="/users" className={({ isActive }) => (isActive ? 'Sidebar-link-active' : undefined)}>
                   <li className="Sidebar-link">
-                     <i className="bx bxs-user-detail"></i> Users & Staff
+                     <i className="bx bxs-user-account"></i> Users & Staff
                   </li>
                </NavLink>
             </ul>
@@ -67,12 +67,12 @@ const Sidebar = () => {
             <ul className="Sidebar-links">
                <NavLink to="/settings" className={({ isActive }) => (isActive ? 'Sidebar-link-active' : undefined)}>
                   <li className="Sidebar-link">
-                     <i className="bx bxs-dashboard"></i> Settings
+                     <i className="bx bx-slider"></i> Settings
                   </li>
                </NavLink>
             </ul>
 
-            <small className="Sidebar-copy">Built by @obaadelusi</small>
+            <small className="Sidebar-copy">&copy; Built by @obaadelusi</small>
          </div>
       </div>
    );

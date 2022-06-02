@@ -10,6 +10,7 @@ import ProductPage from './pages/products/ProductPage';
 
 import AllCustomers from './pages/customers/AllCustomers';
 import NewCustomer from './pages/customers/NewCustomer';
+import EditCustomer from './pages/customers/EditCustomer';
 import CustomerPage from './pages/customers/CustomerPage';
 
 import Suppliers from './pages/Suppliers';
@@ -20,7 +21,7 @@ import Users from './pages/Users';
 import ErrorPage from './pages/ErrorPage';
 
 const Router = () => {
-   const indexStyles = { width: '100%', display: 'grid', placeItems: 'center', color: 'var(--grey-400)' };
+   const indexStyles = { width: '100%', height: '100%', display: 'grid', placeItems: 'center', color: 'var(--grey-400)' };
 
    return (
       <>
@@ -35,7 +36,9 @@ const Router = () => {
             <Route path="customers" element={<AllCustomers />}>
                <Route index element={<div style={indexStyles}>Select a customer</div>} />
                <Route path="new" element={<NewCustomer />} />
-               <Route path=":cId" element={<CustomerPage />} />
+               <Route path=":cId" element={<CustomerPage />}>
+                  <Route path="edit" element={<EditCustomer />} />
+               </Route>
             </Route>
             <Route path="sales" element={<Sales />} />
             <Route path="purchases" element={<Purchases />} />

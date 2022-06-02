@@ -1,154 +1,157 @@
 .Form {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  width: 100%;
-  max-width: 500px;
-  padding: 1.5em;
+   display: flex;
+   flex-direction: column;
+   gap: 24px;
+   width: 100%;
+   max-width: 500px;
+   padding: 1.5em;
 }
 
 .Form-close {
-  color: white;
-  font-size: 14px;
+   color: white;
+   font-size: 14px;
 }
 
 .Form-close i {
-  background-color: tomato;
-  width: 30px;
-  height: 30px;
-  text-align: center;
-  padding-top: 8px;
-  border-radius: 50%;
+   background-color: tomato;
+   width: 30px;
+   height: 30px;
+   text-align: center;
+   padding-top: 8px;
+   border-radius: 50%;
 }
 
 .Form-header {
-  margin: 1em auto;
+   margin: 1em auto;
 }
 
 .Form-input-group {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
+   position: relative;
+   display: flex;
+   flex-wrap: wrap;
+   gap: 5px;
+   width: 100%;
+   margin-left: auto;
+   margin-right: auto;
 }
 
 .Form label {
-  font-weight: 500;
+   font-weight: 500;
 }
 
 .Form-input-group input[type='text'],
 .Form-input-group input[type='number'],
+.Form-input-group input[type='email'],
 .Form-input-group textarea {
-  width: 100%;
-  padding: 0.75em 1em;
-  font-size: 1rem;
-  border: 1px solid var(--grey-200);
-  border-radius: 6px;
-  appearance: none;
-  outline: none;
-  color: var(--grey-400);
-  font-family: inherit;
-  transition: box-shadow 150ms ease-in-out;
+   width: 100%;
+   padding: 0.75em 1em;
+   font-size: 1rem;
+   border: 1px solid var(--grey-200);
+   border-radius: 6px;
+   appearance: none;
+   outline: none;
+   color: var(--grey-400);
+   font-family: inherit;
+   transition: box-shadow 150ms ease-in-out;
 }
 
 .Form-input-group textarea {
-  min-width: 100%;
-  max-width: 100%;
+   min-width: 100%;
+   max-width: 100%;
 }
 
 .Form-input-group input:focus,
 .Form-input-group textarea:focus {
-  border-color: var(--second-color);
-  color: #000;
-  box-shadow: 0 0 0 4px rgba(16, 158, 223, 0.5);
+   border-color: var(--second-color);
+   color: #000;
+   box-shadow: 0 0 0 4px rgba(16, 158, 223, 0.5);
 }
 
 .Form-input-group input:disabled,
 .Form-input-group textarea:disabled {
-  background-color: rgb(212, 212, 212);
+   background-color: rgb(212, 212, 212);
 }
 
 .Form-input-group .label-group {
-  display: flex;
-  align-items: center;
-  width: 100%;
+   display: flex;
+   align-items: center;
+   width: 100%;
 }
 
 .Form-input-group .label-group > span {
-  text-align: center;
-  background-color: lightgrey;
-  border: 1px solid lightgrey;
-  height: 100%;
-  flex: 0 0 15%;
-  font-size: 1.125rem;
-  color: var(--grey-400);
-  padding-top: 10px;
-  border-top-left-radius: 6px;
-  border-bottom-left-radius: 6px;
+   text-align: center;
+   background-color: lightgrey;
+   border: 1px solid lightgrey;
+   height: 100%;
+   flex: 0 0 15%;
+   font-size: 1.125rem;
+   color: var(--grey-400);
+   padding-top: 10px;
+   border-top-left-radius: 6px;
+   border-bottom-left-radius: 6px;
 }
 
 .Form-input-group .label-group > input {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-  flex: 0 0 85%;
+   border-top-left-radius: 0;
+   border-bottom-left-radius: 0;
+   flex: 0 0 85%;
 }
 
 .Form-check-group {
-  background-color: var(--grey-100);
-  padding: 0.75em 1em;
-  border-radius: 6px;
+   background-color: var(--grey-100);
+   padding: 0.75em 1em;
+   border-radius: 6px;
 }
 
 .Form-check-group label {
-  display: grid;
-  grid-template-columns: 1em auto;
-  gap: 1em;
-  cursor: pointer;
+   display: grid;
+   grid-template-columns: 1em auto;
+   gap: 1em;
+   cursor: pointer;
 }
 
 .Form-check-group input[type='checkbox'] {
-  width: 20px;
-  height: 20px;
-  border-radius: 6px;
-  appearance: none;
-  background-color: #fff;
-  color: var(--grey-200);
-  border: 1px solid currentColor;
-  display: grid;
-  place-content: center;
+   width: 20px;
+   height: 20px;
+   border-radius: 6px;
+   appearance: none;
+   background-color: #fff;
+   color: var(--grey-200);
+   border: 1px solid currentColor;
+   display: grid;
+   place-content: center;
+   cursor: pointer;
 }
 
 .Form-check-group input.check-success[type='checkbox'] {
-  color: var(--bg-success);
+   color: var(--bg-success);
 }
 
 .Form-check-group input.check-danger[type='checkbox'] {
-  color: var(--bg-danger);
+   color: var(--bg-danger);
 }
 
 .Form-check-group input[type='checkbox']::before {
-  content: '';
-  width: 0.9em;
-  height: 0.9em;
-  transform: scale(0);
-  transition: 120ms transform ease-in-out;
-  box-shadow: inset 1em 1em currentColor;
-  transform-origin: bottom left;
-  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+   content: '';
+   width: 0.9em;
+   height: 0.9em;
+   transform: scale(0);
+   transition: 120ms transform ease-in-out;
+   box-shadow: inset 1em 1em currentColor;
+   transform-origin: bottom left;
+   clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
 }
 
 .Form-check-group input[type='checkbox']:checked::before {
-  transform: scale(1);
+   transform: scale(1);
 }
 
 .Form-check-group input[type='checkbox']:focus {
-  /* outline: max(2px, 0.15em) solid currentColor; */
-  outline-offset: max(2px, 0.15em);
+   /* outline: max(2px, 0.15em) solid currentColor; */
+   outline-offset: max(2px, 0.15em);
 }
 
 .Form-check-group input[type='checkbox']:disabled {
-  color: var(--grey-200);
-  cursor: not-allowed;
+   color: var(--grey-200);
+   cursor: not-allowed;
 }

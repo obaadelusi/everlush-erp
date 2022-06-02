@@ -2,7 +2,7 @@ import ProductDisplay from '../../components/ProductDisplay';
 import Table from '../../components/shared/Table';
 import addCommas from '../../assets/utils/addCommas';
 
-import './ProductPage.css';
+import './Products.css';
 import '../../components/shared/Table.css';
 
 import { useState, useEffect } from 'react';
@@ -50,7 +50,7 @@ const ProductPage = () => {
          <tr key={i}>
             <td style={{ minWidth: '140px' }}>
                {date.toDateString()} <br />
-               {date.toLocaleTimeString('en-US')}
+               <small>{date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}</small>
             </td>
             <td className={t.type === 'sale' ? 'Transactions-sale' : 'Transactions-purchase'}>{t.type}</td>
             <td>{t.stakeholder.name}</td>

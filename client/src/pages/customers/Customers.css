@@ -1,0 +1,216 @@
+/*************** 
+   ********************************** All Customers */
+.AllCustomers {
+   width: 90%;
+   margin: 1em auto 5em;
+}
+
+.AllCustomers-header {
+   display: flex;
+   justify-content: space-between;
+   align-items: flex-start;
+}
+
+.AllCustomers-layout {
+   display: flex;
+   border-radius: 8px;
+   border: 1px solid var(--grey-200);
+   position: relative;
+   height: 800px;
+   overflow: auto;
+}
+
+.AllCustomers-sidebar {
+   flex: 0 0 35%;
+   border-right: 1px solid var(--grey-200);
+   height: 100%;
+   overflow: auto;
+}
+
+.AllCustomers-searchbar {
+   padding-top: 1em;
+}
+.AllCustomers-searchbar input[type='text'] {
+   border: none;
+   width: 90%;
+   margin-inline: auto;
+   font-size: 0.875rem;
+}
+.AllCustomers-searchbar input[type='text']:not(:placeholder-shown) {
+   outline: 1px solid var(--grey-200);
+}
+
+.AllCustomers-radios {
+   display: flex;
+   align-items: center;
+   margin: 0.5em 0;
+   background-color: var(--grey-100);
+   padding: 1em;
+}
+
+.AllCustomers-input-group {
+   display: inline-flex;
+   align-items: center;
+   flex-wrap: wrap;
+   gap: 10px;
+   margin-right: 2em;
+}
+
+.AllCustomers-radios input {
+   width: 1.25em;
+   height: 1.5em;
+   cursor: pointer;
+}
+
+.AllCustomers-radios label {
+   font-size: 0.875rem;
+   font-weight: 600;
+   cursor: pointer;
+}
+
+.AllCustomers-list-end {
+   font-size: 14px;
+   margin: 2em auto;
+   color: var(--grey-200);
+}
+
+.AllCustomers-list a:last-child .AllCustomers-list-item {
+   border-bottom: none;
+}
+
+.AllCustomers-list-item {
+   color: var(--main-color);
+   height: 92px;
+   padding: 1em;
+   position: relative;
+   border-bottom: 1px solid var(--grey-200);
+}
+
+.AllCustomers-list-item:hover,
+.AllCustomers-list-item-active li {
+   background-color: var(--clr-success-100);
+}
+
+.AllCustomers-list-item p {
+   font-size: 14px;
+   font-weight: 700;
+   color: var(--grey-300);
+}
+
+.AllCustomers-list-item small {
+   position: absolute;
+   bottom: 16px;
+   right: 10px;
+   font-size: 12px;
+}
+
+@media (max-width: 600px) {
+   .AllCustomers-layout {
+      flex-direction: column;
+   }
+}
+
+/* .AllCustomers-table {
+   overflow-x: auto;
+   max-width: 1100px;
+   border-radius: 6px;
+}
+
+.AllCustomers-nav {
+   border-bottom: 1px solid var(--grey-200);
+   display: flex;
+   align-items: center;
+   gap: 16px;
+   padding: 0.75em 0;
+}
+
+.AllCustomers-nav button:not(:disabled):hover {
+   background-color: var(--grey-200);
+}
+
+.AllCustomers tr td:nth-child(4) {
+   min-width: 120px;
+} */
+
+/*************** 
+   ********************************** New Customer */
+.NewCustomer {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   width: 100%;
+   height: 100%;
+   overflow: auto;
+   padding: 3em 1em 1em;
+   background-color: var(--clr-light-blue);
+}
+
+.NewCustomer .Form-close {
+   color: var(--text-black);
+}
+.NewCustomer-form .Form-check-group {
+   background-color: var(--clr-success-100);
+   border: 1px solid var(--bg-success);
+}
+
+/*************** 
+      ********************************** Customer Page */
+.CustomerPage {
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   gap: 2em;
+   overflow-x: auto;
+}
+
+/*************** 
+      ********************************** Customer Display */
+.CustomerDisplay-info {
+   width: 100%;
+   height: 100%;
+}
+.CustomerDisplay-body {
+   padding: 1.5em;
+}
+
+.CustomerDisplay-desc {
+   position: relative;
+}
+
+.CustomerDisplay-active-badge {
+   position: absolute;
+   right: 10px;
+   top: 0;
+}
+
+.CustomerDisplay-title {
+   font-size: 1.5rem;
+   margin-bottom: 0.25em;
+}
+
+.CustomerDisplay-text i {
+   vertical-align: middle;
+   color: var(--second-color);
+}
+
+.CustomerDisplay-buttons {
+   margin-top: 1.5em;
+}
+
+.CustomerDisplay-list {
+   border-top: 1px solid var(--grey-200);
+}
+
+.CustomerDisplay-list-item {
+   padding: 0.5em 1.5em;
+   border-bottom: 1px solid var(--grey-200);
+}
+
+.CustomerDisplay-list-item i {
+   vertical-align: middle;
+}
+
+.CustomerDisplay-featured {
+   font-size: 14px;
+   background-color: var(--grey-100);
+}

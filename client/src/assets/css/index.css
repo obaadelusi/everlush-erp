@@ -2,166 +2,237 @@
 
 /* Variables */
 :root {
-  --main-color: #243045;
-  --second-color: #109ddf;
+   --main-color: #243045;
+   --second-color: #109ddf;
 
-  --grey-100: #f0f0f0;
-  --grey-200: #c0c0c0;
-  --grey-300: #909090;
-  --grey-400: #606060;
-  --grey-500: #303030;
+   --grey-100: #f0f0f0;
+   --grey-200: #c0c0c0;
+   --grey-300: #909090;
+   --grey-400: #606060;
+   --grey-500: #303030;
 
-  --bg-white: #fff;
-  --bg-primary: #0d6efd;
-  --bg-success: #28a745;
-  --bg-danger: #dc3545;
-  --bg-warning: #ffc107;
+   --bg-white: #fff;
+   --bg-primary: #0d6efd;
+   --bg-success: #28a745;
+   --bg-danger: #dc3545;
+   --bg-warning: #ffc107;
 
-  --clr-success-100: #e5ffe5;
-  --clr-success-200: #ccffcc;
-  --clr-warning-100: #fff7df;
-  --clr-danger-100: #ffe5e5;
-  --clr-danger-200: #ffcccc;
-  --clr-primary-100: #ececff;
-  --clr-primary-200: #ccccff;
+   --clr-success-100: #e5ffe5;
+   --clr-success-200: #ccffcc;
+   --clr-warning-100: #fff7df;
+   --clr-danger-100: #ffe5e5;
+   --clr-danger-200: #ffcccc;
+   --clr-primary-100: #ececff;
+   --clr-primary-200: #ccccff;
+   --clr-light-blue: #f0f8ff;
 
-  --text-white: #fff;
-  --text-black: #000;
-  --text-primary: #0d6efd;
+   --text-white: #fff;
+   --text-black: #000;
+   --text-primary: #0d6efd;
 }
 
 /* Resets and Defaults */
 * {
-  margin: 0;
-  box-sizing: border-box;
+   margin: 0;
+   box-sizing: border-box;
 }
 
 body {
-  height: 100%;
-  font-family: -apple-system, BlinkMacSystemFont, 'Manrope', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+   height: 100%;
+   font-family: -apple-system, BlinkMacSystemFont, 'Manrope', sans-serif;
+   -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
 }
 
 ul {
-  list-style-type: none;
-  padding: 0;
+   list-style-type: none;
+   padding: 0;
 }
 
 img {
-  object-fit: cover;
-  object-position: center;
-  width: 100%;
-  height: 100%;
+   object-fit: cover;
+   object-position: center;
+   width: 100%;
+   height: 100%;
 }
 
 /* Headings, text and links */
 h1 {
-  font-size: clamp(2rem, 3vw, 2.5rem);
+   font-size: clamp(2rem, 3vw, 2.5rem);
 }
 h2 {
-  font-size: clamp(1.5rem, 2vw, 1.75rem);
+   font-size: clamp(1.5rem, 2vw, 1.75rem);
 }
 h3 {
-  font-size: 1.25rem;
+   font-size: 1.25rem;
 }
 h4 {
-  font-size: 1.125rem;
+   font-size: 1.125rem;
 }
 
 a {
-  text-decoration: none;
-  color: var(--text-primary);
+   text-decoration: none;
+   color: var(--text-primary);
 }
 
 .text-display {
-  font-weight: 600;
+   font-weight: 600;
 }
 
 /* Images */
 img.greyscale {
-  filter: grayscale(1);
+   filter: grayscale(1);
 }
 
 /* Alerts */
 .alert {
-  display: inline-flex;
-  align-items: center;
-  width: 100%;
-  max-width: 350px;
-  padding: 0.75em 1em;
-  border-radius: 6px;
-  font-size: 14px;
-  position: fixed;
-  top: 2.5em;
-  user-select: none;
-  animation: alertslide 400ms ease;
+   display: inline-flex;
+   align-items: center;
+   width: 100%;
+   max-width: 350px;
+   padding: 0.75em 1em;
+   border-radius: 6px;
+   font-size: 14px;
+   position: fixed;
+   top: 2.5em;
+   user-select: none;
+   animation: alertslide 400ms ease;
 }
 
 .alert i:last-child {
-  margin-left: auto;
-  background-color: #00000025;
-  color: currentColor;
-  border-radius: 50%;
-  padding: 0.25em;
-  cursor: pointer;
+   margin-left: auto;
+   background-color: #00000025;
+   color: currentColor;
+   border-radius: 50%;
+   padding: 0.25em;
+   cursor: pointer;
 }
 
 @keyframes alertslide {
-  from {
-    top: 0;
-    opacity: 0.5;
-  }
-  to {
-    top: 2.5em;
-    opacity: 1;
-  }
+   from {
+      top: 0;
+      opacity: 0.5;
+   }
+   to {
+      top: 2.5em;
+      opacity: 1;
+   }
 }
 
 /* Card placeholder - animated*/
 .animated-bg {
-  background: linear-gradient(to right, #ececec 0%, #dfe7ff 10%, #ececec 20%, #ececec 100%);
-  background-size: 200% 100%;
-  animation: placeholder 1s linear infinite;
+   background: linear-gradient(to right, #ececec 0%, #dfe7ff 10%, #ececec 20%, #ececec 100%);
+   background-size: 200% 100%;
+   animation: placeholder 1s linear infinite;
 }
 
 @keyframes placeholder {
-  0% {
-    background-position: 20% 0;
-  }
-  100% {
-    background-position: -120% 0;
-  }
+   0% {
+      background-position: 20% 0;
+   }
+   100% {
+      background-position: -120% 0;
+   }
 }
 
 .pCard {
-  width: 100%;
-  max-width: 20rem;
-  display: flex;
-  flex-direction: column;
-  border-radius: 12px;
-  box-shadow: 2px 4px 15px #00000033;
-  overflow: hidden;
-  margin: auto;
+   width: 100%;
+   max-width: 20rem;
+   display: flex;
+   flex-direction: column;
+   border-radius: 12px;
+   box-shadow: 2px 4px 15px #00000033;
+   overflow: hidden;
+   margin: auto;
 }
 
 .pCard-body {
-  padding: 1em 1.5em;
+   padding: 1em 1.5em;
 }
 
 .animated-bg.img {
-  height: 200px;
+   height: 200px;
 }
 
 .animated-bg.title {
-  height: 32px;
-  width: 160px;
-  margin-bottom: 1em;
+   height: 32px;
+   width: 160px;
+   margin-bottom: 1em;
 }
 
 .animated-bg.item {
-  width: 100%;
-  max-width: 220px;
-  height: 16px;
-  margin-bottom: 1em;
+   width: 100%;
+   max-width: 220px;
+   height: 16px;
+   margin-bottom: 1em;
+}
+
+/* Spinner */
+.spinner {
+   display: none;
+   color: #fff;
+   position: absolute;
+   width: 20px;
+   height: 8px;
+   top: -1.2em;
+   right: 4em;
+}
+.spinner.show {
+   display: block;
+}
+.spinner div {
+   transform-origin: 40px 40px;
+   animation: spinner 1s linear infinite;
+}
+.spinner div:after {
+   content: ' ';
+   display: block;
+   position: absolute;
+   top: 30px;
+   left: 39px;
+   width: 2px;
+   height: 6px;
+   border-radius: 20%;
+   background: #000;
+}
+.spinner div:nth-child(1) {
+   transform: rotate(0deg);
+   animation-delay: -0.7s;
+}
+.spinner div:nth-child(2) {
+   transform: rotate(45deg);
+   animation-delay: -0.6s;
+}
+.spinner div:nth-child(3) {
+   transform: rotate(90deg);
+   animation-delay: -0.5s;
+}
+.spinner div:nth-child(4) {
+   transform: rotate(135deg);
+   animation-delay: -0.4s;
+}
+.spinner div:nth-child(5) {
+   transform: rotate(180deg);
+   animation-delay: -0.3s;
+}
+.spinner div:nth-child(6) {
+   transform: rotate(225deg);
+   animation-delay: -0.2s;
+}
+.spinner div:nth-child(7) {
+   transform: rotate(270deg);
+   animation-delay: -0.1s;
+}
+.spinner div:nth-child(8) {
+   transform: rotate(315deg);
+   animation-delay: 0s;
+}
+
+@keyframes spinner {
+   0% {
+      opacity: 1;
+   }
+   100% {
+      opacity: 0;
+   }
 }

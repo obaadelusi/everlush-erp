@@ -6,7 +6,7 @@ import ProductCard from '../../components/ProductCard';
 import ProductCardHolder from '../../components/ProductCardHolder';
 import addCommas from '../../assets/utils/addCommas';
 
-import './AllProducts.css';
+import './Products.css';
 
 const Products = () => {
    const [allProducts, setAllProducts] = useState([]);
@@ -42,7 +42,7 @@ const Products = () => {
    return (
       <div className="Products">
          <div className="Products-header">
-            <PageTitle title="Products" info={products.length} />
+            <PageTitle info={products.length}>Products</PageTitle>
             <Link to="/products/new" className="Button Button-main">
                + Create new
             </Link>

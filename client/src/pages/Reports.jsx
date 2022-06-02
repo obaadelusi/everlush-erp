@@ -3,7 +3,7 @@ import PageTitle from '../components/PageTitle';
 const Reports = () => {
    return (
       <div>
-         <PageTitle title="Reports" />
+         <PageTitle>Reports</PageTitle>
       </div>
    );
 };

@@ -2,15 +2,18 @@ import { useState, useEffect } from 'react';
 import { Link, NavLink, Outlet } from 'react-router-dom';
 
 import PageTitle from '../../components/PageTitle';
-import './AllCustomers.css';
+import Spinner from '../../components/shared/Spinner';
+import './Customers.css';
 
 function AllCustomers() {
    // const [skip, setSkip] = useState(0);
    const [allCustomers, setAllCustomers] = useState([]);
    const [customers, setCustomers] = useState([]);
    const [showCustomers, setShowCustomers] = useState('active');
+   const [showSpinner, setShowSpinner] = useState(false);
+   const [timer, setTimer] = useState();
    const skip = 0;
-   const limit = 0;
+   const limit = 11;
 
    // https://everlush-erp.herokuapp.com
 
@@ -44,19 +47,49 @@ function AllCustomers() {
    //   }
    // };
 
+   //-------- Live search function
+   function displayResults(value) {
+      if (value.length > 1) {
+         fetch(`/customers?q=${value}`)
+            .then((res) => res.json())
+            .then((data) => setCustomers(data))
+            .then(() => setShowSpinner(false))
+            .catch((e) => console.log('JS Error:', e));
+      }
+      setCustomers(allCustomers);
+   }
+
+   const searchCustomers = (e) => {
+      let value = e.currentTarget.value.trim();
+      value ? setShowSpinner(true) : setShowSpinner(false);
+
+      window.clearTimeout(timer);
+      setTimer(
+         setTimeout(() => {
+            displayResults(value);
+         }, 1500)
+      );
+   };
+
    document.title = 'Customers - Everlush';
 
    return (
       <div className="AllCustomers">
          <div className="AllCustomers-header">
-            <PageTitle title="Customers" info={customers.length} />
+            <PageTitle info={customers.length}>Customers</PageTitle>
             <Link to="/customers/new" className="Button Button-primary">
-               Create new +
+               New &ensp;<i className="bx bx-user-plus"></i>
             </Link>
          </div>
 
          <div className="AllCustomers-layout">
             <aside className="AllCustomers-sidebar">
+               <div className="AllCustomers-searchbar">
+                  <div className="Form-input-group">
+                     <input type="text" placeholder="🔍 Search" onChange={searchCustomers} />
+                     <Spinner isActive={showSpinner} />
+                  </div>
+               </div>
                <div className="AllCustomers-radios">
                   <div className="AllCustomers-input-group">
                      <input type="radio" name="showActive" id="active" onChange={handleChange} value="active" checked={showCustomers === 'active'} />
@@ -79,7 +112,7 @@ function AllCustomers() {
                         </li>
                      </NavLink>
                   ))}
-                  <div className="AllCustomers-list-end"> ---------- End of list ---------- </div>
+                  <div className="AllCustomers-list-end"> ----------- End of list ---------- </div>
                </ul>
             </aside>
             <Outlet />
