@@ -50,7 +50,7 @@ function AllCustomers() {
    //-------- Live search function
    function displayResults(value) {
       if (value.length > 1) {
-         fetch(`/customers?q=${value}`)
+         fetch(`https://everlush-erp.herokuapp.com/customers?q=${value}`)
             .then((res) => res.json())
             .then((data) => setCustomers(data))
             .then(() => setShowSpinner(false))
