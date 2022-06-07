@@ -17,7 +17,7 @@ const Products = () => {
 
    useEffect(() => {
       const fetchProducts = async () => {
-         fetch('https://everlush.netlify.app/products')
+         fetch('https://everlush-erp.herokuapp.com/products')
             .then((res) => res.json())
             .then((data) => {
                setAllProducts(data);
@@ -60,6 +60,7 @@ const Products = () => {
          <div className="Products-cards">
             {products.length === 0 && (
                <>
+                  <ProductCardHolder />
                   <ProductCardHolder />
                   <ProductCardHolder />
                   <ProductCardHolder />

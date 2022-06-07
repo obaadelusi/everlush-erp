@@ -15,7 +15,7 @@ const CustomerPage = () => {
 
    useEffect(() => {
       const getCustomer = async () => {
-         fetch(`/stakeholders/${cId}`)
+         fetch(`https://everlush-erp.herokuapp.com/stakeholders/${cId}`)
             .then((res) => res.json())
             .then((data) => {
                setTransactions(data.transactions);

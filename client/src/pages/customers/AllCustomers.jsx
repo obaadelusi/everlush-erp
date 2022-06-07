@@ -5,6 +5,8 @@ import PageTitle from '../../components/PageTitle';
 import Spinner from '../../components/shared/Spinner';
 import './Customers.css';
 
+// https://everlush-erp.herokuapp.com
+
 function AllCustomers() {
    // const [skip, setSkip] = useState(0);
    const [allCustomers, setAllCustomers] = useState([]);
@@ -19,7 +21,7 @@ function AllCustomers() {
 
    useEffect(() => {
       const getCustomers = async () => {
-         fetch(`/customers?skip=${skip}&limit=${limit}`)
+         fetch(`https://everlush-erp.herokuapp.com/customers?skip=${skip}&limit=${limit}`)
             .then((res) => res.json())
             .then((data) => {
                setAllCustomers(data);

@@ -52,7 +52,7 @@ const NewSupplier = () => {
          <div className="Form-header">
             <h2>New Supplier</h2>
          </div>
-         <form action="https://everlush.netlify.app/suppliers" method="POST" className="Form NewSupplier-form">
+         <form action="https://everlush-erp.herokuapp.com/suppliers" method="POST" className="Form NewSupplier-form">
             <div className="Form-input-group">
                <label htmlFor="name">Supplier name</label>
                <input type="text" id="name" name="supplier[name]" value={name} onChange={handleChange} autoFocus required />

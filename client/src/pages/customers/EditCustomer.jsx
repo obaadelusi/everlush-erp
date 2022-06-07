@@ -15,7 +15,7 @@ const EditCustomer = () => {
 
    useEffect(() => {
       const getCustomer = async () => {
-         fetch(`/stakeholders/${cId}/edit`)
+         fetch(`https://everlush-erp.herokuapp.com/stakeholders/${cId}/edit`)
             .then((res) => res.json())
             .then((data) => setCustomer(data))
             .catch((err) => console.error(err));
@@ -52,7 +52,7 @@ const EditCustomer = () => {
          </div>
          {message && <Alert type="danger">{message}</Alert>}
 
-         <form action={`/stakeholders/${cId}?isCustomer=true&_method=PUT`} method="POST" className="Form EditCustomer-form">
+         <form action={`https://everlush-erp.herokuapp.com/stakeholders/${cId}?isCustomer=true&_method=PUT`} method="POST" className="Form EditCustomer-form">
             {customer.isActive ? (
                <div className="Form-check-group">
                   <label htmlFor="activeSwitch">

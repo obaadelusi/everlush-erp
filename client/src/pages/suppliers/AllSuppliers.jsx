@@ -19,7 +19,7 @@ function AllSuppliers() {
 
    useEffect(() => {
       const getSuppliers = async () => {
-         fetch(`https://everlush.netlify.app/suppliers?skip=${skip}&limit=${limit}`)
+         fetch(`https://everlush-erp.herokuapp.com/suppliers?skip=${skip}&limit=${limit}`)
             .then((res) => res.json())
             .then((data) => {
                setAllSuppliers(data);
@@ -50,7 +50,7 @@ function AllSuppliers() {
    //------------------> Live search function
    function displayResults(value) {
       if (value.length > 1) {
-         fetch(`https://everlush.netlify.app/suppliers?q=${value}`)
+         fetch(`https://everlush-erp.herokuapp.com/suppliers?q=${value}`)
             .then((res) => res.json())
             .then((data) => setSuppliers(data))
             .then(() => setShowSpinner(false))

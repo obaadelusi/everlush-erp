@@ -17,7 +17,11 @@ const ProductPage = () => {
 
    useEffect(() => {
       const getProduct = async () => {
-         fetch(`/products/${pId}`, { headers: { accepts: 'application/json' } })
+         fetch(`/products/${pId}`, {
+            headers: {
+               accepts: 'application/json'
+            }
+         })
             .then((res) => res.json())
             .then((data) => {
                setTransactions(data.transactions);

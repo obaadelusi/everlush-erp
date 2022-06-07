@@ -15,7 +15,7 @@ const EditSupplier = () => {
 
    useEffect(() => {
       const getSupplier = async () => {
-         fetch(`https://everlush.netlify.app/stakeholders/${sId}/edit`)
+         fetch(`https://everlush-erp.herokuapp.com/stakeholders/${sId}/edit`)
             .then((res) => res.json())
             .then((data) => setSupplier(data))
             .catch((err) => console.error(err));
@@ -52,7 +52,7 @@ const EditSupplier = () => {
          </div>
          {message && <Alert type="danger">{message}</Alert>}
 
-         <form action={`https://everlush.netlify.app/stakeholders/${sId}?isSupplier=true&_method=PUT`} method="POST" className="Form EditSupplier-form">
+         <form action={`https://everlush-erp.herokuapp.com/stakeholders/${sId}?isSupplier=true&_method=PUT`} method="POST" className="Form EditSupplier-form">
             {supplier.isActive ? (
                <div className="Form-check-group">
                   <label htmlFor="activeSwitch">

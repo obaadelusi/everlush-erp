@@ -52,7 +52,7 @@ const NewCustomer = () => {
          <div className="Form-header">
             <h2>New Customer</h2>
          </div>
-         <form action="/customers" method="POST" className="Form NewCustomer-form">
+         <form action="https://everlush-erp.herokuapp.com/customers" method="POST" className="Form NewCustomer-form">
             <div className="Form-input-group">
                <label htmlFor="name">Customer name</label>
                <input type="text" id="name" name="customer[name]" value={name} onChange={handleChange} autoFocus required />

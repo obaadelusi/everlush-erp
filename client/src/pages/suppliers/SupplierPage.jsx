@@ -15,7 +15,7 @@ const SupplierPage = () => {
 
    useEffect(() => {
       const getSupplier = async () => {
-         fetch(`https://everlush.netlify.app/stakeholders/${sId}`)
+         fetch(`https://everlush-erp.herokuapp.com/stakeholders/${sId}`)
             .then((res) => res.json())
             .then((data) => {
                setTransactions(data.transactions);
