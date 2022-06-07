@@ -3,29 +3,29 @@ import { useState, useEffect } from 'react';
 
 import Alert from '../../components/shared/Alert';
 import { Button } from '../../components/shared/Buttons';
-import './Customers.css';
+import './Suppliers.css';
 
-const EditCustomer = () => {
-   const { cId } = useParams();
+const EditSupplier = () => {
+   const { sId } = useParams();
    const [disableBtn, setDisableBtn] = useState(true);
-   const [customer, setCustomer] = useState({});
+   const [supplier, setSupplier] = useState({});
    const [message, setMessage] = useState('');
 
    // https://everlush-erp.herokuapp.com
 
    useEffect(() => {
-      const getCustomer = async () => {
-         fetch(`/stakeholders/${cId}/edit`)
+      const getSupplier = async () => {
+         fetch(`https://everlush.netlify.app/stakeholders/${sId}/edit`)
             .then((res) => res.json())
-            .then((data) => setCustomer(data))
+            .then((data) => setSupplier(data))
             .catch((err) => console.error(err));
       };
-      getCustomer();
-   }, [cId]);
+      getSupplier();
+   }, [sId]);
 
    let phoneNum, email, street, state, country;
-   customer.contacts &&
-      customer.contacts.forEach((c) => {
+   supplier.contacts &&
+      supplier.contacts.forEach((c) => {
          phoneNum = c.phones.join(', ');
          email = c.emails.join(', ');
          street = c.street;
@@ -38,39 +38,39 @@ const EditCustomer = () => {
       setDisableBtn(false);
    };
 
-   document.title = 'Edit Customer - Everlush';
+   document.title = 'Edit Supplier - Everlush';
 
    return (
-      <div className="EditCustomer">
+      <div className="EditSupplier">
          <div>
-            <Link to={`/customers/${cId}`} className="Form-close">
+            <Link to={`/suppliers/${sId}`} className="Form-close">
                <i className="bx bx-x"></i> &ensp; Exit
             </Link>
          </div>
          <div className="Form-header">
-            <h2>Edit Customer</h2>
+            <h2>Edit Supplier</h2>
          </div>
          {message && <Alert type="danger">{message}</Alert>}
 
-         <form action={`/stakeholders/${cId}?isCustomer=true&_method=PUT`} method="POST" className="Form EditCustomer-form">
-            {customer.isActive ? (
+         <form action={`https://everlush.netlify.app/stakeholders/${sId}?isSupplier=true&_method=PUT`} method="POST" className="Form EditSupplier-form">
+            {supplier.isActive ? (
                <div className="Form-check-group">
                   <label htmlFor="activeSwitch">
                      <input type="checkbox" name="stakeholder[isActive]" id="activeSwitch" value="false" className="check-danger" onChange={handleChange} />
-                     Deactivate '{customer.name}'
+                     Deactivate '{supplier.name}'
                   </label>
                </div>
             ) : (
                <div className="Form-check-group">
                   <label htmlFor="deactivateSwitch">
                      <input type="checkbox" name="stakeholder[isActive]" id="deactivateSwitch" value="true" className="check-success" onChange={handleChange} />
-                     Activate '{customer.name}'
+                     Activate '{supplier.name}'
                   </label>
                </div>
             )}
             <div className="Form-input-group">
-               <label htmlFor="name">Customer name</label>
-               <input type="text" id="name" name="stakeholder[name]" defaultValue={customer.name} onChange={handleChange} required />
+               <label htmlFor="name">Supplier name</label>
+               <input type="text" id="name" name="stakeholder[name]" defaultValue={supplier.name} onChange={handleChange} required />
             </div>
             <div className="Form-input-group">
                <label htmlFor="phones">Phone numbers</label>
@@ -110,4 +110,4 @@ const EditCustomer = () => {
    );
 };
 
-export default EditCustomer;
+export default EditSupplier;

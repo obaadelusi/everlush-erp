@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
 import './Buttons.css';
 
-export function Button({ children, className, type, onPress }) {
+export function Button({ children, type, className, isDisabled, onPress }) {
    return (
-      <button type={type} className={`Button Button-${className}`} onClick={onPress}>
+      <button type={type} className={`Button Button-${className}`} onClick={onPress} disabled={isDisabled}>
          {children}
       </button>
    );
@@ -19,7 +19,8 @@ export function LinkButton({ children, link, type }) {
 
 Button.defaultProps = {
    className: 'main',
-   type: 'button'
+   type: 'button',
+   isDisabled: false
 };
 
 LinkButton.defaultProps = {

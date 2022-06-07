@@ -93,8 +93,10 @@ img.greyscale {
    padding: 0.75em 1em;
    border-radius: 6px;
    font-size: 14px;
-   position: fixed;
-   top: 2.5em;
+   position: sticky;
+   top: 0;
+   margin-bottom: 1em;
+   z-index: 1000;
    user-select: none;
    animation: alertslide 400ms ease;
 }
@@ -110,11 +112,11 @@ img.greyscale {
 
 @keyframes alertslide {
    from {
-      top: 0;
-      opacity: 0.5;
+      top: -2em;
+      opacity: 0.4;
    }
    to {
-      top: 2.5em;
+      top: 0;
       opacity: 1;
    }
 }

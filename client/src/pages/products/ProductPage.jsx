@@ -1,6 +1,6 @@
-import ProductDisplay from '../../components/ProductDisplay';
+import ProductDisplay from './_ProductDisplay';
 import Table from '../../components/shared/Table';
-import addCommas from '../../assets/utils/addCommas';
+import { addCommas } from '../../utils';
 
 import './Products.css';
 import '../../components/shared/Table.css';
@@ -17,7 +17,7 @@ const ProductPage = () => {
 
    useEffect(() => {
       const getProduct = async () => {
-         fetch(`https://everlush-erp.herokuapp.com/products/${pId}`)
+         fetch(`/products/${pId}`, { headers: { accepts: 'application/json' } })
             .then((res) => res.json())
             .then((data) => {
                setTransactions(data.transactions);
@@ -30,10 +30,7 @@ const ProductPage = () => {
    }, [pId]);
 
    const itemList = [];
-   let quantity;
-   let price;
-   let prevStock;
-   let stockLeft;
+   let quantity, price, prevStock, stockLeft;
 
    transactions.forEach((t, i) => {
       t.items.forEach((item) => {
@@ -65,7 +62,7 @@ const ProductPage = () => {
       );
    });
 
-   document.title = `${product.name} - Everlush`;
+   document.title = product.name && `${product.name} - Everlush`;
 
    return (
       <div className="ProductPage">

@@ -19,7 +19,7 @@ function AllCustomers() {
 
    useEffect(() => {
       const getCustomers = async () => {
-         fetch(`https://everlush-erp.herokuapp.com/customers?skip=${skip}&limit=${limit}`)
+         fetch(`/customers?skip=${skip}&limit=${limit}`)
             .then((res) => res.json())
             .then((data) => {
                setAllCustomers(data);
@@ -50,7 +50,7 @@ function AllCustomers() {
    //-------- Live search function
    function displayResults(value) {
       if (value.length > 1) {
-         fetch(`https://everlush-erp.herokuapp.com/customers?q=${value}`)
+         fetch(`/customers?q=${value}`)
             .then((res) => res.json())
             .then((data) => setCustomers(data))
             .then(() => setShowSpinner(false))

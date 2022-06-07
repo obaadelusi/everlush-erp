@@ -80,7 +80,7 @@
 
 .Form-input-group .label-group > span {
    text-align: center;
-   background-color: lightgrey;
+   background-color: var(--grey-100);
    border: 1px solid lightgrey;
    height: 100%;
    flex: 0 0 15%;

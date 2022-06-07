@@ -5,7 +5,7 @@ import './Sidebar.css';
 
 const Sidebar = () => {
    return (
-      <div className="Sidebar">
+      <section className="Sidebar">
          <div className="Sidebar-content">
             <div className="Sidebar-header">
                <div className="Sidebar-logo">
@@ -74,7 +74,7 @@ const Sidebar = () => {
 
             <small className="Sidebar-copy">&copy; Built by @obaadelusi</small>
          </div>
-      </div>
+      </section>
    );
 };
 

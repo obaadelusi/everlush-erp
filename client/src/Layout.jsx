@@ -6,17 +6,17 @@ import Header from './components/header/Header';
 import './Layout.css';
 
 const Layout = () => {
-  return (
-    <BrowserRouter>
-      <div className="Layout">
-        <Sidebar />
-        <div className="Layout-main">
-          <Header />
-          <Router />
-        </div>
-      </div>
-    </BrowserRouter>
-  );
+   return (
+      <BrowserRouter>
+         <div className="Layout">
+            <Sidebar />
+            <section className="Layout-main">
+               <Header />
+               <Router />
+            </section>
+         </div>
+      </BrowserRouter>
+   );
 };
 
 export default Layout;

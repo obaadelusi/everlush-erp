@@ -17,7 +17,7 @@ router.get('/', async (req, res) => {
       res.send(customers);
    } else {
       const Q = new RegExp(`${q}`, 'i');
-      const customers = await Customer.find({ name: Q }).exec();
+      const customers = await Customer.find({ name: Q, isCustomer: true }).exec();
       res.send(customers);
    }
 });
@@ -32,9 +32,8 @@ router.post('/', async (req, res) => {
    const stakeholder = new Customer(req.body.customer);
    stakeholder.isCustomer = true;
    await stakeholder.save();
-   console.log(stakeholder);
+
    res.redirect(302, `https://everlush.netlify.app/customers/${stakeholder._id}`);
-   // res.redirect(302, `https://everlush.netlify.app/stakeholders/${stakeholder._id}`);
 });
 
 module.exports = router;

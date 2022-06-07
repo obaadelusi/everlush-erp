@@ -94,8 +94,3 @@ tfoot {
    background-color: var(--clr-danger-100);
    border-bottom: 4px solid var(--bg-danger);
 }
-
-/* Transactions Table on Product page */
-.CustomerPage-table {
-   margin: 0 1em;
-}

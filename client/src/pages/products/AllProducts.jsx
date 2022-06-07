@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 import PageTitle from '../../components/PageTitle';
-import ProductCard from '../../components/ProductCard';
-import ProductCardHolder from '../../components/ProductCardHolder';
-import addCommas from '../../assets/utils/addCommas';
+import ProductCard from './_ProductCard';
+import ProductCardHolder from './_ProductCardHolder';
+import { addCommas } from '../../utils';
 
 import './Products.css';
 
@@ -17,7 +17,7 @@ const Products = () => {
 
    useEffect(() => {
       const fetchProducts = async () => {
-         fetch('https://everlush-erp.herokuapp.com/products')
+         fetch('https://everlush.netlify.app/products')
             .then((res) => res.json())
             .then((data) => {
                setAllProducts(data);

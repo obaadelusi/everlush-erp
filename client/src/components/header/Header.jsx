@@ -12,12 +12,12 @@ const Header = () => {
          <ul className="Header-links">
             <li>
                <Link to="/sales/new">
-                  <i class="bx bxs-layer-plus"></i>&ensp;New transaction
+                  <i className="bx bxs-layer-plus"></i>&ensp;New transaction
                </Link>
             </li>
             <li>
                <Link to="/customers/new">
-                  <i class="bx bxs-plus-square"></i>&ensp;Create new
+                  <i className="bx bxs-plus-square"></i>&ensp;Create new
                </Link>
             </li>
          </ul>

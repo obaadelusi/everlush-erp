@@ -1,10 +1,10 @@
-import PageTitle from './PageTitle';
-import StockBadge from './shared/StockBadge';
-import ActiveBadge from './shared/ActiveBadge';
-import { LinkButton } from './shared/Buttons';
-import addCommas from '../assets/utils/addCommas';
+import PageTitle from '../../components/PageTitle';
+import StockBadge from '../../components/shared/StockBadge';
+import ActiveBadge from '../../components/shared/ActiveBadge';
+import { LinkButton } from '../../components/shared/Buttons';
+import { addCommas } from '../../utils';
 
-import './ProductDisplay.css';
+import './Products.css';
 
 const ProductDisplay = ({ id, name, image, desc, isActive, category, stock, lowStock, sPrice }) => {
    return (

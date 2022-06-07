@@ -43,6 +43,8 @@ function NewProduct() {
       }
    };
 
+   document.title = 'Add New Product - Everlush';
+
    return (
       <div className="ProductForm">
          <div>

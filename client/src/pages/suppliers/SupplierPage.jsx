@@ -1,30 +1,30 @@
 import { useState, useEffect } from 'react';
 import { useParams, Outlet } from 'react-router-dom';
 
-import CustomerDisplay from './_CustomerDisplay';
+import SupplierDisplay from './_SupplierDisplay';
 import Table from '../../components/shared/Table';
 import { addCommas } from '../../utils';
-import './Customers.css';
+import './Suppliers.css';
 
-const CustomerPage = () => {
-   const { cId } = useParams();
-   const [customer, setCustomer] = useState({});
+const SupplierPage = () => {
+   const { sId } = useParams();
+   const [supplier, setSupplier] = useState({});
    const [transactions, setTransactions] = useState([]);
 
    // https://everlush-erp.herokuapp.com
 
    useEffect(() => {
-      const getCustomer = async () => {
-         fetch(`/stakeholders/${cId}`)
+      const getSupplier = async () => {
+         fetch(`https://everlush.netlify.app/stakeholders/${sId}`)
             .then((res) => res.json())
             .then((data) => {
                setTransactions(data.transactions);
-               setCustomer(data.stakeholder);
+               setSupplier(data.stakeholder);
             })
             .catch((err) => console.error(err));
       };
-      getCustomer();
-   }, [cId]);
+      getSupplier();
+   }, [sId]);
 
    const itemList = [];
 
@@ -59,10 +59,10 @@ const CustomerPage = () => {
    insertData();
 
    return (
-      <div className="CustomerPage">
-         <CustomerDisplay id={customer._id} isActive={customer.isActive} name={customer.name} contacts={customer.contacts} isCustomer={customer.isCustomer} isSupplier={customer.isSupplier} />
+      <div className="SupplierPage">
+         <SupplierDisplay id={supplier._id} isActive={supplier.isActive} name={supplier.name} contacts={supplier.contacts} isCustomer={supplier.isCustomer} isSupplier={supplier.isSupplier} />
          <Outlet />
-         <div className="CustomerPage-table">
+         <div className="SupplierPage-table">
             <Table title="Transactions" dataLength={transactions.length}>
                <thead>
                   <tr>
@@ -80,4 +80,4 @@ const CustomerPage = () => {
    );
 };
 
-export default CustomerPage;
+export default SupplierPage;

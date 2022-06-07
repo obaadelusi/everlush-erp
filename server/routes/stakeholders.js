@@ -4,6 +4,8 @@ const router = express.Router();
 const Stakeholder = require('../models/Stakeholder');
 const Transaction = require('../models/Transaction');
 
+// https://everlush.netlify.app
+
 // Render edit stakeholder form
 router.get('/:id/edit', async (req, res) => {
    const { id } = req.params;
@@ -11,17 +13,21 @@ router.get('/:id/edit', async (req, res) => {
    if (!stakeholder) {
       res.redirect('/');
    } else {
-      res.render('stakeholders/edit', { stakeholder });
+      res.send(stakeholder);
    }
 });
 
 // Edit a stakeholder
 router.put('/:id', async (req, res) => {
    const { id } = req.params;
+   const { isSupplier, isCustomer } = req.query;
    const stakeholder = await Stakeholder.findByIdAndUpdate(id, req.body.stakeholder);
    await stakeholder.save();
-   console.log(req.body);
-   res.redirect(`/stakeholders/${id}`);
+   if (isCustomer) {
+      res.redirect(302, `/customers/${id}`);
+   } else if (isSupplier) {
+      res.redirect(302, `https://everlush.netlify.app/suppliers/${id}`);
+   }
 });
 
 // Delete a stakeholder

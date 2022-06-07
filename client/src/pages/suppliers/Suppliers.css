@@ -1,17 +1,17 @@
 /*************** 
-   **********************************--- All Customers -*/
-.AllCustomers {
+   **********************************--- All Suppliers -*/
+.AllSuppliers {
    width: 90%;
    margin: 1em auto 5em;
 }
 
-.AllCustomers-header {
+.AllSuppliers-header {
    display: flex;
    justify-content: space-between;
    align-items: flex-start;
 }
 
-.AllCustomers-layout {
+.AllSuppliers-layout {
    display: flex;
    border-radius: 8px;
    border: 1px solid var(--grey-200);
@@ -20,7 +20,7 @@
    overflow: auto;
 }
 
-.AllCustomers-sidebar {
+.AllSuppliers-sidebar {
    flex: 0 0 35%;
    border-right: 1px solid var(--grey-200);
    height: 100%;
@@ -28,20 +28,20 @@
    overflow: auto;
 }
 
-.AllCustomers-searchbar {
+.AllSuppliers-searchbar {
    padding-top: 1em;
 }
-.AllCustomers-searchbar input[type='text'] {
+.AllSuppliers-searchbar input[type='text'] {
    border: none;
    width: 90%;
    margin-inline: auto;
    font-size: 0.875rem;
 }
-.AllCustomers-searchbar input[type='text']:not(:placeholder-shown) {
+.AllSuppliers-searchbar input[type='text']:not(:placeholder-shown) {
    outline: 1px solid var(--grey-200);
 }
 
-.AllCustomers-radios {
+.AllSuppliers-radios {
    display: flex;
    align-items: center;
    margin: 0.5em 0;
@@ -49,7 +49,7 @@
    padding: 1em;
 }
 
-.AllCustomers-input-group {
+.AllSuppliers-input-group {
    display: inline-flex;
    align-items: center;
    flex-wrap: wrap;
@@ -57,29 +57,29 @@
    margin-right: 2em;
 }
 
-.AllCustomers-radios input {
+.AllSuppliers-radios input {
    width: 1.25em;
    height: 1.5em;
    cursor: pointer;
 }
 
-.AllCustomers-radios label {
+.AllSuppliers-radios label {
    font-size: 0.875rem;
    font-weight: 600;
    cursor: pointer;
 }
 
-.AllCustomers-list-end {
+.AllSuppliers-list-end {
    font-size: 14px;
    margin: 2em auto;
    color: var(--grey-200);
 }
 
-.AllCustomers-list a:last-child .AllCustomers-list-item {
+.AllSuppliers-list a:last-child .AllSuppliers-list-item {
    border-bottom: none;
 }
 
-.AllCustomers-list-item {
+.AllSuppliers-list-item {
    color: var(--main-color);
    height: 92px;
    padding: 1em;
@@ -87,18 +87,18 @@
    border-bottom: 1px solid var(--grey-200);
 }
 
-.AllCustomers-list-item:hover,
-.AllCustomers-list-item-active li {
+.AllSuppliers-list-item:hover,
+.AllSuppliers-list-item-active li {
    background-color: var(--clr-success-100);
 }
 
-.AllCustomers-list-item p {
+.AllSuppliers-list-item p {
    font-size: 14px;
    font-weight: 700;
    color: var(--grey-300);
 }
 
-.AllCustomers-list-item small {
+.AllSuppliers-list-item small {
    position: absolute;
    bottom: 16px;
    right: 10px;
@@ -106,14 +106,14 @@
 }
 
 @media (max-width: 600px) {
-   .AllCustomers-layout {
+   .AllSuppliers-layout {
       flex-direction: column;
    }
 }
 
 /*************** 
-   **********************************--- New Customer -*/
-.NewCustomer {
+   **********************************--- New Supplier -*/
+.NewSupplier {
    display: flex;
    flex-direction: column;
    align-items: center;
@@ -124,17 +124,17 @@
    background-color: var(--clr-light-blue);
 }
 
-.NewCustomer .Form-close {
+.NewSupplier .Form-close {
    color: var(--text-black);
 }
-.NewCustomer-form .Form-check-group {
+.NewSupplier-form .Form-check-group {
    background-color: var(--clr-success-100);
    border: 1px solid var(--bg-success);
 }
 
 /*************** 
-**********************************--- Edit Customer -*/
-.EditCustomer {
+**********************************--- Edit Supplier -*/
+.EditSupplier {
    display: flex;
    flex-direction: column;
    align-items: center;
@@ -151,27 +151,27 @@
    z-index: 1000;
 }
 
-.EditCustomer::-webkit-scrollbar {
+.EditSupplier::-webkit-scrollbar {
    width: 10px;
 }
-.EditCustomer::-webkit-scrollbar-track {
+.EditSupplier::-webkit-scrollbar-track {
    background: var(--clr-light-blue);
 }
-.EditCustomer::-webkit-scrollbar-thumb {
+.EditSupplier::-webkit-scrollbar-thumb {
    background-color: var(--grey-200);
    border-radius: 0.25em;
 }
-.EditCustomer::-webkit-scrollbar-thumb:hover {
+.EditSupplier::-webkit-scrollbar-thumb:hover {
    background-color: var(--grey-300);
 }
 
-.EditCustomer .Form-close {
+.EditSupplier .Form-close {
    color: var(--text-black);
 }
 
 /*************** 
-      **********************************--- Customer Page -*/
-.CustomerPage {
+      **********************************--- Supplier Page -*/
+.SupplierPage {
    position: relative;
    width: 100%;
    display: flex;
@@ -180,58 +180,58 @@
    overflow-x: auto;
 }
 
-.CustomerPage-table {
+.SupplierPage-table {
    margin: 0 1em;
 }
 
 /*************** 
-      **********************************--- Customer Display -*/
-.CustomerDisplay-info {
+      **********************************--- Supplier Display -*/
+.SupplierDisplay-info {
    width: 100%;
    height: 100%;
 }
-.CustomerDisplay-body {
+.SupplierDisplay-body {
    padding: 1.5em;
 }
 
-.CustomerDisplay-desc {
+.SupplierDisplay-desc {
    position: relative;
 }
 
-.CustomerDisplay-active-badge {
+.SupplierDisplay-active-badge {
    position: absolute;
    right: 10px;
    top: 0;
 }
 
-.CustomerDisplay-title {
+.SupplierDisplay-title {
    font-size: 1.5rem;
    margin-bottom: 0.25em;
 }
 
-.CustomerDisplay-text i {
+.SupplierDisplay-text i {
    vertical-align: middle;
    color: var(--second-color);
 }
 
-.CustomerDisplay-buttons {
+.SupplierDisplay-buttons {
    margin-top: 1.5em;
 }
 
-.CustomerDisplay-list {
+.SupplierDisplay-list {
    border-top: 1px solid var(--grey-200);
 }
 
-.CustomerDisplay-list-item {
+.SupplierDisplay-list-item {
    padding: 0.5em 1.5em;
    border-bottom: 1px solid var(--grey-200);
 }
 
-.CustomerDisplay-list-item i {
+.SupplierDisplay-list-item i {
    vertical-align: middle;
 }
 
-.CustomerDisplay-featured {
+.SupplierDisplay-featured {
    font-size: 14px;
    background-color: var(--grey-100);
 }
