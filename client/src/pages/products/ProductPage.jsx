@@ -17,7 +17,7 @@ const ProductPage = () => {
 
    useEffect(() => {
       const getProduct = async () => {
-         fetch(`/products/${pId}`, {
+         fetch(`https://everlush-erp.herokuapp.com/products/${pId}`, {
             headers: {
                accepts: 'application/json'
             }

@@ -20,7 +20,7 @@ function CustomerDisplay({ id, isActive, name, contacts, isCustomer, isSupplier 
                </div>
                <div className="CustomerDisplay-buttons">
                   <LinkButton link={`/customers/${id}/edit`}>
-                     <i className="bx bxs-edit"></i>&ensp;Edit
+                     <i className="bx bxs-edit"></i>&ensp;{isActive ? 'Edit' : 'Activate'}
                   </LinkButton>
                   <LinkButton link="#" type="outline">
                      New transaction +

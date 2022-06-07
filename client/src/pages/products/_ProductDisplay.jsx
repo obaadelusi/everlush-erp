@@ -55,10 +55,10 @@ ProductDisplay.defaultProps = {
    image: 'https://picsum.photos/500',
    desc: 'Lorem ipsum dolor!',
    isActive: false,
-   category: 'Drinks',
+   category: 'Nature',
    stock: 0,
-   lowStock: 50,
-   sPrice: 8500
+   lowStock: 1,
+   sPrice: 99.99
 };
 
 export default ProductDisplay;
