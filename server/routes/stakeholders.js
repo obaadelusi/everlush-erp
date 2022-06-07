@@ -24,9 +24,11 @@ router.put('/:id', async (req, res) => {
    const stakeholder = await Stakeholder.findByIdAndUpdate(id, req.body.stakeholder);
    await stakeholder.save();
    if (isCustomer) {
-      res.redirect(302, `/customers/${id}`);
+      res.redirect(`https://everlush.netlify.app/customers/${id}`);
    } else if (isSupplier) {
-      res.redirect(302, `https://everlush.netlify.app/suppliers/${id}`);
+      res.redirect(`https://everlush.netlify.app/suppliers/${id}`);
+   } else {
+      res.redirect(`https://everlush.netlify.app/`);
    }
 });
 

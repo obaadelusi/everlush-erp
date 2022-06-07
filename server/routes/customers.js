@@ -33,7 +33,7 @@ router.post('/', async (req, res) => {
    stakeholder.isCustomer = true;
    await stakeholder.save();
 
-   res.redirect(302, `https://everlush.netlify.app/customers/${stakeholder._id}`);
+   res.redirect(307, `https://everlush.netlify.app/customers/${stakeholder._id}`);
 });
 
 module.exports = router;
